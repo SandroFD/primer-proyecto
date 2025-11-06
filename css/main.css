@@ -1,5 +1,163 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* ====== Variables ====== */
+:root{
+  --brand:#5DBB7C;
+  --brand-700:#3FA066;
+  --pill-bg:#2F2F2F;
+  --bg:#F2F4F5;
+  --text:#1F1F1F;
+  --muted:#6E7480;
+  --white:#fff;
+  --shadow:0 8px 24px rgba(0,0,0,.10);
+  --radius:18px;
 }
+
+/* ===== Reset ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+img{max-width:100%;display:block}
+html,body{height:100%}
+body{
+  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.55;
+}
+
+/* ===== Helpers ===== */
+.container{width:min(1120px,92%);margin-inline:auto}
+h1{font-size:clamp(1.6rem,2.6vw,2rem);font-weight:700;letter-spacing:.2px}
+h2{font-size:clamp(1.25rem,2.2vw,1.6rem);font-weight:700;text-align:center;margin-bottom:2.1rem}
+h3{font-size:1rem;font-weight:700;color:#222}
+p{color:var(--muted);font-size:.92rem}
+
+/* ===== Buttons ===== */
+.btn{
+  display:inline-block;border-radius:999px;padding:.72rem 1.15rem;
+  font-weight:700;text-decoration:none;transition:.18s ease;border:2px solid transparent;
+}
+.btn--primary{background:var(--brand);color:var(--white);box-shadow:0 3px 0 rgba(0,0,0,.12)}
+.btn--primary:hover{background:var(--brand-700);transform:translateY(-1px)}
+.btn--xl{padding:.82rem 1.25rem;font-size:.98rem}
+.btn--nav-primary{
+  background:var(--pill-bg);color:#fff;padding:.55rem 1rem;font-size:.9rem;
+  border-radius:999px;box-shadow:inset 0 -2px 0 rgba(255,255,255,.06), 0 2px 8px rgba(0,0,0,.15);
+}
+.btn--nav-primary:hover{filter:brightness(1.06)}
+
+/* Foco visible accesible */
+:focus-visible{outline:3px solid rgba(95,187,124,.5);outline-offset:2px}
+
+/* ===== Header / Nav (sin JS) ===== */
+.site-header{background:var(--brand);position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0}
+.brand{color:#fff;font-weight:700;text-decoration:none;letter-spacing:.3px}
+.nav__menu{display:flex;align-items:center;gap:1.1rem}
+.nav__link{color:#fff;text-decoration:none;font-weight:600;opacity:.95}
+.nav__link:hover{opacity:1}
+
+/* Toggle CSS-only */
+.nav__checkbox{display:none}
+.nav__toggle{display:none;background:none;border:0;cursor:pointer}
+.nav__bar{display:block;width:22px;height:2px;background:#fff;margin:4px 0;border-radius:2px}
+
+/* ===== Hero ===== */
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem;align-items:center;padding:clamp(1.6rem,4vw,3.2rem) 0 2.8rem}
+.hero__img{max-width:460px}
+.hero__img img{width:100%;height:auto;filter:drop-shadow(0 16px 26px rgba(0,0,0,.18))}
+.hero__copy h1{margin-bottom:.6rem}
+.hero__copy p{margin-bottom:1.1rem;font-size:.94rem}
+
+/* ===== Features ===== */
+.features{padding:1.2rem 0 2.4rem}
+.features .grid{display:grid;grid-template-columns:repeat(2,minmax(280px,1fr));gap:1.6rem;align-items:stretch}
+.features .card{
+  background:var(--white);padding:1.5rem 1.4rem;border-radius:var(--radius);text-align:center;
+  box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;height:100%;
+}
+.features .card .icon{display:flex;justify-content:center;margin-bottom:.9rem}
+.features .card .icon svg{width:72px;height:72px}
+.features .card h3{font-size:1.06rem;line-height:1.25;margin:.4rem 0 .35rem}
+.features .card p{font-size:.95rem;line-height:1.55;max-width:36ch;margin-inline:auto}
+
+/* ===== Testimonios (grid, sin carrusel) ===== */
+.testimonials{padding:2.6rem 0}
+.t-grid{display:grid;grid-template-columns:repeat(2,minmax(260px,1fr));gap:1rem}
+.testimonial{
+  background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:1.2rem 1.35rem
+}
+.testimonial h4{font-size:.98rem;margin-bottom:.35rem}
+.testimonial .meta{color:var(--muted);font-size:.85rem;margin:.2rem 0 .5rem}
+.testimonial--cta{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;min-height:160px;text-align:center}
+
+/* ===== Footer ===== */
+.site-footer{margin-top:2.2rem;background:#1F2623;color:#E8ECEA;padding:1.8rem 0}
+.footer__grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start}
+.footer__block h5{font-size:.95rem;margin-bottom:.6rem;color:#fff}
+.footer__block a{color:#CFD6D2;text-decoration:none;display:block;margin:.2rem 0}
+.social{display:flex;gap:.6rem}.social a{font-size:1.15rem}
+
+/* ===== Responsive ===== */
+@media (min-width:1024px){ .brand{font-size:1.6rem} }
+@media (max-width:760px){
+  .brand{font-size:1.3rem}
+  .hero{grid-template-columns:1fr;text-align:center}
+  .hero__img{margin-inline:auto}
+
+  /* Menú móvil CSS-only */
+  .nav__toggle{display:block}
+  .nav__menu{
+    position:absolute; right:4%; top:60px;
+    flex-direction:column; gap:.75rem;
+    background:var(--brand); padding:.8rem; border-radius:12px;
+    display:none; box-shadow:0 10px 18px rgba(0,0,0,.14);
+  }
+  /* Cuando el checkbox está activado, mostramos el menú */
+  .nav__checkbox:checked ~ .nav__menu{display:flex}
+
+  /* Features móviles */
+  .features .grid{grid-template-columns:1fr}
+  .features .card{padding:1.2rem 1rem}
+  .features .card .icon svg{width:64px;height:64px}
+  .features .card h3{font-size:1rem}
+  .features .card p{font-size:.92rem}
+
+  /* Testimonios móviles */
+  .t-grid{grid-template-columns:1fr}
+}
+
+
+
+
+
+
+/* ===== Modales 100% HTML+CSS (usar #id con :target) ===== */
+.modal{
+  position: fixed; inset: 0; display: none;
+  background: rgba(0,0,0,.35);               /* oscurece */
+  backdrop-filter: blur(6px);                /* difumina el fondo */
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1000; padding: 1rem;
+}
+.modal:target{ display: grid; place-items: center; }
+
+.modal__dialog{
+  width: min(480px, 92%); background: #fff; color: #1f1f1f;
+  border-radius: 16px; box-shadow: 0 18px 48px rgba(0,0,0,.25);
+  padding: 1.25rem 1.25rem 1.5rem; position: relative;
+}
+.modal__dialog h2{ margin: .2rem 0 1rem; font-size: 1.2rem }
+
+.modal__form{ display: grid; gap: .8rem }
+.modal__form label{ font-weight: 600; display: grid; gap: .35rem; font-size: .92rem }
+.modal__form input{
+  border: 1.8px solid #d3d8dc; border-radius: 10px; padding: .7rem .8rem; font-size: .95rem;
+}
+.modal__form input:focus{ border-color: var(--brand); outline: none;
+  box-shadow: 0 0 0 3px rgba(95,187,124,.25); }
+
+.modal__close{
+  position: absolute; top: .5rem; right: .7rem; text-decoration: none;
+  font-size: 1.6rem; line-height: 1; color: #666; font-weight: 700;
+}
+.modal__close:hover{ color: #111 }
+
+/* Evita scroll de fondo cuando el modal está abierto (requiere Chrome/Edge/Safari modernos) */
+body:has(.modal:target){ overflow: hidden; }

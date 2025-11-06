@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contacto — NutriTrack</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    .contact-container{width:min(900px,92%);margin:1.8rem auto 2.2rem;background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:1.4rem 1.4rem 2rem}
+    .contact-title{text-align:center;margin:.25rem 0 .5rem}
+    .contact-sub{text-align:center;color:var(--muted);margin-bottom:1rem;font-size:.95rem}
+    .contact-form{display:grid;gap:1rem}
+    .row-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    @media (max-width:760px){.row-2{grid-template-columns:1fr}}
+    .contact-form label{font-weight:600;font-size:.9rem;color:#222}
+    .contact-form input,.contact-form textarea{border:1.8px solid #d3d8dc;border-radius:10px;padding:.65rem .8rem;font-size:.95rem;outline:none;transition:border-color .2s ease,box-shadow .2s ease;width:100%}
+    .contact-form textarea{min-height:160px;resize:vertical}
+    .contact-form input:focus,.contact-form textarea:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(95,187,124,.25)}
+    .actions{display:flex;gap:.6rem;justify-content:flex-end;margin-top:.4rem}
+    @media (max-width:760px){.actions{justify-content:stretch;flex-direction:column}}
+    .btn--light{background:#fff;border:2px solid #e6e6e6;color:#1f1f1f}
+    .btn--light:hover{border-color:#d3d3d3}
+    .simple-header .nav__menu{gap:.8rem}
+    .simple-header .nav__link--muted{opacity:.9;background:rgba(255,255,255,.15);padding:.35rem .6rem;border-radius:999px;text-decoration:none}
+  </style>
+</head>
+<body>
+  <header class="site-header simple-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">NutriTrack</a>
+      <nav class="nav__menu" aria-label="Contacto">
+        <a class="nav__link nav__link--muted" href="index.html">← Volver al inicio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contact-container">
+    <h1 class="contact-title">Contacto</h1>
+    <p class="contact-sub">¿Tienes dudas o sugerencias? Envíanos un mensaje y te responderemos en breve.</p>
+
+    <!-- Sin JS: usa validación nativa HTML5 -->
+    <form class="contact-form" action="#" method="post">
+      <div class="row-2">
+        <div>
+          <label for="c-name">Nombre</label>
+          <input type="text" id="c-name" name="name" autocomplete="name" required placeholder="Tu nombre">
+        </div>
+        <div>
+          <label for="c-email">Correo electrónico</label>
+          <input type="email" id="c-email" name="email" autocomplete="email" required placeholder="tucorreo@ejemplo.com">
+        </div>
+      </div>
+
+      <div>
+        <label for="c-subject">Asunto</label>
+        <input type="text" id="c-subject" name="subject" required placeholder="Tema de tu mensaje">
+      </div>
+
+      <div>
+        <label for="c-message">Mensaje</label>
+        <textarea id="c-message" name="message" required placeholder="Escribe tu mensaje aquí..."></textarea>
+      </div>
+
+      <div class="actions">
+        <button type="reset" class="btn btn--light">Limpiar</button>
+        <button type="submit" class="btn btn--primary">Enviar</button>
+      </div>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <div class="footer__block">
+        <h5>Nuestras Redes</h5>
+        <nav class="social" aria-label="Redes sociales">
+          <a href="#" aria-label="Instagram">🟣</a>
+          <a href="#" aria-label="Facebook">🔵</a>
+          <a href="#" aria-label="X / Twitter">⚫</a>
+        </nav>
+      </div>
+      <div class="footer__block">
+        <a href="index.html#testimonios">Testimonios</a>
+        <a href="acerca.html">Acerca de NutriTrack</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="privacidad.html">Políticas de privacidad</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
