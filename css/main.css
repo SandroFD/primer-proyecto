@@ -161,3 +161,199 @@ p{color:var(--muted);font-size:.92rem}
 
 /* Evita scroll de fondo cuando el modal está abierto (requiere Chrome/Edge/Safari modernos) */
 body:has(.modal:target){ overflow: hidden; }
+
+
+
+
+
+/* Dashboard */
+
+/* ===== Dashboard layout (sidebar + contenido) ===== */
+.app{
+  display:grid;
+  grid-template-columns: 240px minmax(0,1fr);
+  gap: 1.2rem;
+  padding: 1.2rem 0 2rem;
+  min-height: calc(100vh - 70px);
+}
+.sidebar{
+  background: var(--white);
+  border: 1px solid #e6eaed;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  position: sticky;
+  top: 84px; /* debajo del header sticky */
+  height: fit-content;
+}
+.nav--side{
+  display: grid;
+  gap: .6rem;
+}
+.nav--side .btn{ text-align: center; }
+.nav--side .is-active{
+  outline: 3px solid rgba(95,187,124,.2);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.06), 0 4px 12px rgba(0,0,0,.18);
+}
+
+/* Contenido principal */
+.main{ padding: .4rem 0 }
+.greeting{
+  color: var(--brand-700);
+  font-weight: 700;
+  margin: .2rem 0 1rem;
+}
+
+/* Grid de tarjetas */
+.grid--one{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* Card reutilizable */
+.card{
+  background: var(--white);
+  border: 1px solid #eef2f4;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem 1rem .9rem;
+}
+.card__header{
+  display:flex; align-items:center; justify-content:space-between; gap:.8rem;
+  margin-bottom: .4rem;
+}
+.card__header h3{ color:#222; margin:0 }
+.link{ color: var(--brand-700); font-weight:700; text-decoration:none }
+.link:hover{ text-decoration: underline }
+
+/* Lista de metas */
+.meta-list{
+  list-style: none;
+  display: grid; gap: .55rem;
+  color: var(--text);
+  font-size: .95rem;
+}
+.meta-list b{ color: #f97316 }
+
+/* Placeholder del gráfico */
+.chart-ph{
+  display:grid; place-items:center;
+  height: 260px;
+  border-radius: 14px;
+  border: 2px dashed #d1d5db;
+  color: var(--muted);
+  background: #fafafa;
+  text-align:center;
+}
+.chart-ph p{ color:#31363c; font-weight:700; margin-bottom:.2rem }
+
+/* Footer: soporte a tus clases custom en el snippet */
+.site-footer .footergrid{
+  /* similar a .footer__grid existente */
+  display:grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem; align-items:start;
+}
+.site-footer .footerblock h5{
+  font-size:.95rem; margin-bottom:.6rem; color:#fff;
+}
+.site-footer .footerblock .social{ display:flex; gap:.6rem }
+.site-footer .footerblock .social a{ font-size:1.15rem; text-decoration:none }
+
+/* Responsive */
+@media (max-width: 960px){
+  .app{ grid-template-columns: 1fr }
+  .sidebar{ position: static }
+}
+
+
+
+
+
+/* Metas */
+
+/* ===== Metas: título y acciones ===== */
+.metas__title{
+  display:flex; align-items:center; gap:.75rem; margin:.1rem 0 .75rem;
+}
+.icon--tile{
+  width:40px; height:40px; border-radius:12px;
+  display:grid; place-items:center;
+  background:#fff; border:1px solid #e8ecef; box-shadow: var(--shadow);
+  color: var(--brand-700);
+}
+.metas__title h2{ margin:0; color: var(--brand-700); }
+
+.metas__actions{
+  display:flex; align-items:center; gap:.75rem; margin:0 0 1rem;
+}
+.action-pill{
+  background:#fff; border:1px solid #e8ecef; border-radius:12px; padding:10px 14px;
+  display:flex; align-items:center; gap:.75rem; box-shadow: var(--shadow);
+}
+.action-pill span{ font-weight:600; color:#f97316; }
+.btn-icon{
+  width:36px; height:36px; border-radius:10px; display:grid; place-items:center;
+  border:1px solid #e6e9ec; background:#fff; cursor:pointer; transition:.18s ease;
+}
+.btn-icon:hover{ background:#f7faf8; }
+.btn-danger{ background:#ef4444; border-color:#ef4444; color:#fff; }
+.btn-danger:hover{ filter:saturate(1.05); }
+
+/* ===== Metas: grilla y tarjetas ===== */
+.goals-grid{
+  display:grid; gap:1rem;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+}
+@media (max-width: 920px){
+  .goals-grid{ grid-template-columns: 1fr; }
+}
+
+.goal-card{
+  background: var(--white);
+  border: 1px solid #eef2f4;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display:flex; flex-direction:column;
+}
+.goal-media img{
+  width:100%; height:170px; object-fit:cover; display:block;
+}
+.goal-body{ padding: 12px 14px 16px; }
+.goal-title{ margin:6px 0 10px; font-size:14px; color:#3a3f44; }
+
+/* Progreso */
+.progress-wrap{ margin: 0 0 8px; }
+.progress-bar{
+  height:10px; width:100%; background:#e5f0ec; border-radius:999px; overflow:hidden;
+}
+.progress-fill{
+  height:100%; width:0%;
+  background: linear-gradient(90deg, var(--brand-700), #41c77c);
+  border-radius:999px; transition: width .5s ease;
+}
+
+.meta-row{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  color: var(--muted); font-size:12px;
+}
+.badge{ font-weight:700; color:#f97316; }
+.reminder{ display:flex; align-items:center; gap:6px; }
+.toggle{
+  width:18px; height:18px; border:1px solid #cfd8d3; border-radius:50%;
+  display:inline-grid; place-items:center; cursor:pointer; background:#fff;
+  color:#91a39b; font-size:12px;
+}
+.toggle.is-on{ background: var(--brand-700); border-color: var(--brand-700); color:#fff; }
+
+/* Footer: soporta las clases custom del snippet */
+.site-footer .footergrid{
+  display:grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem; align-items:start;
+}
+.site-footer .footerblock h5{
+  font-size:.95rem; margin-bottom:.6rem; color:#fff;
+}
+.site-footer .footerblock .social{ display:flex; gap:.6rem }
+.site-footer .footerblock .social a{ font-size:1.15rem; text-decoration:none }

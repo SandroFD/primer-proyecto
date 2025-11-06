@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NutriTrack | Dashboard</title>
+
+  <!-- Fuente -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tu hoja de estilos global -->
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+
+  <!-- Header / Nav superior (usa estilos de main.css) -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">NutriTrack</a>
+
+      <!-- Menú móvil sin JS (definido en main.css) -->
+      <input type="checkbox" id="nav-toggle" class="nav__checkbox" />
+      <label class="nav__toggle" for="nav-toggle" aria-label="Abrir menú">
+        <span class="nav__bar"></span>
+        <span class="nav__bar"></span>
+        <span class="nav__bar"></span>
+      </label>
+
+      <nav class="nav__menu">
+        <a class="nav__link" href="metas.html">Metas</a>
+        <a class="nav__link" href="alimentacion.html">Alimentación</a>
+        <a class="nav__link" href="reporte.html">Reporte</a>
+        <a class="nav__link" href="chatbot.html">Chatbot</a>
+        <a class="nav__link" href="configuracion.html">Configuración</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Layout principal del Dashboard -->
+  <div class="container app">
+    <aside class="sidebar">
+      <nav class="nav--side">
+        <a href="inicio.html" class="btn btn--nav-primary">Inicio</a>
+        <a href="metas.html" class="btn btn--nav-primary">Metas</a>
+        <a href="alimentacion.html" class="btn btn--nav-primary">Alimentación</a>
+        <a href="reporte.html" class="btn btn--nav-primary">Reporte</a>
+        <a href="chatbot.html" class="btn btn--nav-primary">Chatbot</a>
+        <a href="configuracion.html" class="btn btn--nav-primary">Configuración</a>
+        <a href="dashboard.html" aria-current="page" class="btn btn--nav-primary is-active">Dashboard</a>
+      </nav>
+    </aside>
+
+    <section class="content">
+      <main class="main">
+        <h2 class="greeting">Buen día, <span id="username">XXXX</span>! ¿Listo para nuevos retos?</h2>
+
+        <div class="grid grid--one">
+          <article class="card">
+            <div class="card__header">
+              <h3>Metas mensuales:</h3>
+              <a class="link" href="metas.html">Ver más</a>
+            </div>
+            <ul class="meta-list">
+              <li><b>Meta Nº 1:</b> Comprométete a cocinar la cena en casa un mínimo de 4 noches por semana durante todo el mes.</li>
+              <li><b>Meta Nº 2:</b> Realiza 20 minutos de movimiento intencional, 4 días a la semana.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card__header">
+              <h3>Progreso del usuario:</h3>
+            </div>
+
+            <!-- Sustituye por tu imagen de gráfico cuando la tengas -->
+            <div class="chart-ph" role="img" aria-label="Espacio reservado para el gráfico">
+              <div>
+                <p>Espacio reservado para el gráfico</p>
+                <small>Reemplaza este bloque por una imagen &lt;img&gt; del gráfico</small>
+              </div>
+            </div>
+          </article>
+        </div>
+      </main>
+    </section>
+  </div>
+
+  <!-- Footer (reemplazado por el snippet que enviaste) -->
+  <footer class="site-footer">
+    <div class="container footergrid">
+      <div class="footerblock">
+        <h5>Nuestras Redes</h5>
+        <nav class="social">
+          <a href="#" aria-label="Instagram">🟣</a>
+          <a href="#" aria-label="Facebook">🔵</a>
+          <a href="#" aria-label="X / Twitter">⚫</a>
+        </nav>
+      </div>
+      <div class="footer__block">
+        <a href="index.html#testimonios">Testimonios</a>
+        <a href="acerca.html">Acerca de NutriTrack</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="privacidad.html">Políticas de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

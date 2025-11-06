@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NutriTrack | Metas</title>
+
+  <!-- Fuente -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tu hoja de estilos global -->
+  <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+
+  <!-- Header / Nav superior -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">NutriTrack</a>
+
+      <!-- Menú móvil sin JS (definido en main.css) -->
+      <input type="checkbox" id="nav-toggle" class="nav__checkbox" />
+      <label class="nav__toggle" for="nav-toggle" aria-label="Abrir menú">
+        <span class="nav__bar"></span>
+        <span class="nav__bar"></span>
+        <span class="nav__bar"></span>
+      </label>
+
+      <nav class="nav__menu">
+        <a class="nav__link" href="metas.html" aria-current="page">Metas</a>
+        <a class="nav__link" href="alimentacion.html">Alimentación</a>
+        <a class="nav__link" href="reporte.html">Reporte</a>
+        <a class="nav__link" href="chatbot.html">Chatbot</a>
+        <a class="nav__link" href="configuracion.html">Configuración</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Layout principal -->
+  <div class="container app">
+    <aside class="sidebar">
+      <nav class="nav--side">
+        <a href="inicio.html" class="btn btn--nav-primary">Inicio</a>
+        <a href="metas.html" class="btn btn--nav-primary is-active" aria-current="page">Metas</a>
+        <a href="alimentacion.html" class="btn btn--nav-primary">Alimentación</a>
+        <a href="reporte.html" class="btn btn--nav-primary">Reporte</a>
+        <a href="chatbot.html" class="btn btn--nav-primary">Chatbot</a>
+        <a href="configuracion.html" class="btn btn--nav-primary">Configuración</a>
+        <a href="dashboard.html" class="btn btn--nav-primary">Dashboard</a>
+      </nav>
+    </aside>
+
+    <section class="content">
+      <main class="main">
+        <div class="page-title metas__title">
+          <div class="icon icon--tile" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+              <path d="M13 4v5h5"/>
+              <path d="M9 13h6M9 17h3"/>
+            </svg>
+          </div>
+          <h2>Metas:</h2>
+        </div>
+
+        <div class="actions metas__actions">
+          <div class="action-pill">
+            <span>Agrega o elimina una meta</span>
+            <button class="btn-icon" title="Agregar meta" aria-label="Agregar meta">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+            <button class="btn-icon" title="Editar meta" aria-label="Editar meta">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+            </button>
+            <button class="btn-icon btn-danger" title="Eliminar meta" aria-label="Eliminar meta">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Grid de metas -->
+        <div class="goals-grid">
+          <!-- Tarjeta 1 -->
+          <article class="goal-card" data-progress="78">
+            <div class="goal-media">
+              <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?q=80&w=1200&auto=format&fit=crop" alt="Plato balanceado">
+            </div>
+            <div class="goal-body">
+              <p class="goal-title">Comer un plato balanceado cada día.</p>
+              <div class="progress-wrap">
+                <div class="progress-bar"><div class="progress-fill"></div></div>
+              </div>
+              <div class="meta-row">
+                <span>Progreso: <span class="badge">78%</span></span>
+                <label class="reminder">
+                  <span>Recordatorio:</span>
+                  <button class="toggle" role="switch" aria-checked="false" aria-label="Activar recordatorio">✓</button>
+                </label>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tarjeta 2 -->
+          <article class="goal-card" data-progress="93">
+            <div class="goal-media">
+              <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?q=80&w=1200&auto=format&fit=crop" alt="Movimiento y nutrición">
+            </div>
+            <div class="goal-body">
+              <p class="goal-title">Combinar movimiento y nutrición.</p>
+              <div class="progress-wrap">
+                <div class="progress-bar"><div class="progress-fill"></div></div>
+              </div>
+              <div class="meta-row">
+                <span>Progreso: <span class="badge">93%</span></span>
+                <label class="reminder">
+                  <span>Recordatorio:</span>
+                  <button class="toggle is-on" role="switch" aria-checked="true" aria-label="Desactivar recordatorio">✓</button>
+                </label>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tarjeta 3 -->
+          <article class="goal-card" data-progress="52">
+            <div class="goal-media">
+              <img src="https://images.unsplash.com/photo-1505252585461-04db1eb84625?q=80&w=1200&auto=format&fit=crop" alt="Fruta fresca">
+            </div>
+            <div class="goal-body">
+              <p class="goal-title">Cambiar un snack por fruta fresca.</p>
+              <div class="progress-wrap">
+                <div class="progress-bar"><div class="progress-fill"></div></div>
+              </div>
+              <div class="meta-row">
+                <span>Progreso: <span class="badge">52%</span></span>
+                <label class="reminder">
+                  <span>Recordatorio:</span>
+                  <button class="toggle" role="switch" aria-checked="false" aria-label="Activar recordatorio">✓</button>
+                </label>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </main>
+    </section>
+  </div>
+
+  <!-- Footer (el snippet que indicaste) -->
+  <footer class="site-footer">
+    <div class="container footergrid">
+      <div class="footerblock">
+        <h5>Nuestras Redes</h5>
+        <nav class="social">
+          <a href="#" aria-label="Instagram">🟣</a>
+          <a href="#" aria-label="Facebook">🔵</a>
+          <a href="#" aria-label="X / Twitter">⚫</a>
+        </nav>
+      </div>
+      <div class="footer__block">
+        <a href="index.html#testimonios">Testimonios</a>
+        <a href="acerca.html">Acerca de NutriTrack</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="privacidad.html">Políticas de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS mínimo: barras de progreso y toggle accesible -->
+  <script>
+    // Progreso
+    document.querySelectorAll('.goal-card').forEach(card => {
+      const p = Number(card.dataset.progress || 0);
+      const fill = card.querySelector('.progress-fill');
+      if (fill) fill.style.width = Math.max(0, Math.min(100, p)) + '%';
+    });
+
+    // Toggle recordatorio
+    document.querySelectorAll('.toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const on = btn.classList.toggle('is-on');
+        btn.setAttribute('aria-checked', on ? 'true' : 'false');
+      });
+    });
+  </script>
+</body>
+</html>
