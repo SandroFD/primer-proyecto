@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NutriTrack | Mis Metas</title>
+  <title>NutriTrack | Alimentos</title>
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/main.css" />
@@ -41,8 +42,8 @@
       <h2 class="App-greeting">¡Hola, <span id="dash-nombre">Usuario</span>!</h2>
       <nav class="App-nav">
         <a href="dashboard.html">Dashboard</a>
-        <a href="metas.html" class="is-active">Metas</a>
-        <a href="alimentos.html">Alimentos</a>
+        <a href="metas.html">Metas</a>
+        <a href="alimentos.html" class="is-active">Alimentos</a>
         <a href="registros.html">Historial de registros</a>
         <a href="progreso.html">Progreso</a>
         <a href="chatbot.html">Chatbot</a>
@@ -54,28 +55,31 @@
       
       <!-- Formulario -->
       <div class="Card" style="margin-bottom: 1.5rem; text-align: left;">
-        <h3>Agregar Nueva Meta</h3>
-        <form id="form-meta" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
-          <div style="flex: 1; min-width: 200px;">
-            <input type="text" id="meta-titulo" placeholder="Ej: Beber 2L de agua" required 
+        <h3>Explorar Alimentos</h3>
+        <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem;">Busca y agrega alimentos a tu catálogo personal.</p>
+        
+        <form id="form-alimento" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <div style="flex: 2; min-width: 200px;">
+            <input type="text" id="alimento-nombre" placeholder="Nombre del alimento (ej: Manzana)" required 
                    style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px;">
           </div>
-          <div style="flex: 1; min-width: 200px;">
-            <input type="text" id="meta-desc" placeholder="Descripción (opcional)" 
+          <div style="flex: 1; min-width: 120px;">
+            <input type="number" id="alimento-calorias" placeholder="Kcal (aprox)" required 
                    style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px;">
           </div>
-          <button type="submit" class="btn btn--primary">Guardar</button>
+          <button type="submit" class="btn btn--primary">Agregar</button>
         </form>
       </div>
 
-      <!-- Lista de metas -->
+      <!-- Lista de alimentos -->
       <div class="Card" style="text-align: left;">
-        <h3>Mis Metas Activas</h3>
-        <div id="lista-metas" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+        <h3>Mi Catálogo de Alimentos</h3>
+        <div id="lista-alimentos" style="margin-top: 1rem; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
           <!-- Carga dinámica -->
-          <p style="color: var(--muted);">Cargando metas...</p>
+          <p style="color: var(--muted);">Cargando catálogo...</p>
         </div>
       </div>
+
     </section>
 
   </main>

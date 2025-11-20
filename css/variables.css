@@ -1,0 +1,21 @@
+:root {
+  --brand: #5DBB7C;
+  --brand-dark: #3FA066;
+  --brand2: #FF994A;
+  --brand3: #F2C94C;
+  --dark: #070707;
+  --dark-accent: #1F2623;
+  --muted: #6E7480;
+  --light: #F2F4F5;
+  --white: #fff;
+  --radius: 18px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, .10);
+  --mint: #dff2e6;
+  --mint-2: #e8f5ee;
+  --green-700: #207944;
+  --border: #e8ecef;
+  
+  /* Variables adicionales */
+  --danger: #cc0000;
+  --danger-bg: #ffebeb;
+}

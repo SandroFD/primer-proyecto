@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NutriTrack | Mi Perfil</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="Header">
+    <div class="Header-container u-container">
+      <a class="Header-brand" href="../index.html">NutriTrack</a>
+      
+      <div class="Header-actions">
+        <a class="btn btn--secondary" href="registrar.html">Registrar comida</a>
+        
+        <div class="Header-profile">
+          <div class="Header-profileIcon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+          <div class="Header-dropdown">
+            <a href="usuario.html">Perfil</a>
+            <a href="configuracion.html">Configuración</a>
+            <div class="Header-dropdownDivider"></div>
+            <a href="../index.html" class="text-danger">Cerrar sesión</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido -->
+  <main class="App-layout u-container">
+    
+    <!-- Sidebar -->
+    <aside class="App-sidebar">
+      <h2 class="App-greeting">¡Hola, <span id="dash-nombre">Usuario</span>!</h2>
+      <nav class="App-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="metas.html">Metas</a>
+        <a href="alimentos.html">Alimentos</a>
+        <a href="registros.html">Historial de registros</a>
+        <a href="progreso.html">Progreso</a>
+        <a href="chatbot.html">Chatbot</a>
+      </nav>
+    </aside>
+
+    <!-- Contenido: Perfil de Usuario (Solo Lectura) -->
+    <section class="App-main">
+      
+      <!-- Tarjeta de usuario -->
+      <div class="Card" style="text-align: center; margin-bottom: 2rem;">
+        <div style="width: 100px; height: 100px; background: var(--mint); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: var(--brand-dark);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </div>
+        <h2 id="view-nombre" style="margin-bottom: 0.5rem;">Cargando...</h2>
+        <p id="view-email" style="color: var(--muted);">...</p>
+        
+        <div style="margin-top: 1.5rem;">
+          <a href="configuracion.html" class="btn btn--secondary">Editar Perfil</a>
+        </div>
+      </div>
+
+      <!-- Detalles en Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        
+        <!-- Datos físicos -->
+        <div class="Card">
+          <h4 style="color: var(--brand-dark); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">Mis Datos</h4>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div>
+              <p style="font-size: 0.85rem; color: var(--muted);">Edad</p>
+              <p style="font-weight: 600;" id="view-edad">-</p>
+            </div>
+            <div>
+              <p style="font-size: 0.85rem; color: var(--muted);">Peso</p>
+              <p style="font-weight: 600;" id="view-peso">-</p>
+            </div>
+            <div>
+              <p style="font-size: 0.85rem; color: var(--muted);">Altura</p>
+              <p style="font-weight: 600;" id="view-altura">-</p>
+            </div>
+            <div>
+              <p style="font-size: 0.85rem; color: var(--muted);">Género</p>
+              <p style="font-weight: 600; text-transform: capitalize;" id="view-genero">-</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Plan -->
+        <div class="Card">
+          <h4 style="color: var(--brand-dark); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">Mi Plan</h4>
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div>
+              <p style="font-size: 0.85rem; color: var(--muted);">Nivel de Actividad</p>
+              <p style="font-weight: 600; text-transform: capitalize;" id="view-actividad">-</p>
+            </div>
+            <div>
+              <p style="font-size: 0.85rem; color: var(--muted);">Objetivo Principal</p>
+              <p style="font-weight: 600; text-transform: capitalize;" id="view-objetivo">-</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="Footer">
+    <div class="Footer-container u-container">
+      <div class="Footer-block">
+        <h5>Nuestras redes</h5>
+        <nav class="Footer-socials" aria-label="Redes sociales">
+          <a href="#"><img src="../assets/icons/logoInstagram.svg" alt="Instagram"></a>
+          <a href="#"><img src="../assets/icons/logoFacebook.svg" alt="Facebook"></a>
+          <a href="#"><img src="../assets/icons/logoX.svg" alt="X"></a>
+        </nav>
+      </div>
+      <div class="Footer-block">
+        <a href="testimonios.html">Testimonios</a>
+        <a href="acerca.html">Acerca de NutriTrack</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="privacidad.html">Políticas de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js" defer></script>
+</body>
+</html>

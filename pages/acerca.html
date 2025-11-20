@@ -7,29 +7,30 @@
   <link rel="stylesheet" href="../css/main.css">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    .about-container{width:min(900px,92%);margin:2rem auto 2.5rem;background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:2rem 2rem 2.5rem;line-height:1.6}
-    .about-container h1{text-align:center;margin-bottom:1.2rem}
-    .about-container h2{margin-top:2rem;font-size:1.3rem;color:var(--brand)}
-    .about-container p{margin:.5rem 0;font-size:.96rem;color:#333}
-    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem;margin-top:1.2rem}
-    .team-card{background:#f8faf9;border-radius:14px;padding:1rem;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.05)}
-    .team-card h3{margin-top:.6rem;margin-bottom:.3rem;font-size:1.05rem;color:#1f1f1f}
-    .team-card p{font-size:.88rem;color:var(--muted)}
-    .simple-header .nav__link--muted{opacity:.9;background:rgba(255,255,255,.15);padding:.35rem .6rem;border-radius:999px;text-decoration:none}
-  </style>
 </head>
 <body>
-  <header class="site-header simple-header">
-    <div class="container nav">
-      <a class="brand" href="../index.html">NutriTrack</a>
-      <nav class="nav__menu">
-        <a class="nav__link nav__link--muted" href="../index.html">← Volver al inicio</a>
+  <!-- Header -->
+  <header class="Header">
+    <div class="Header-container u-container">
+      <a class="Header-brand" href="../index.html">NutriTrack</a>
+
+      <!-- Menú móvil -->
+      <button class="Header-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span class="Header-toggleBar"></span>
+          <span class="Header-toggleBar"></span>
+          <span class="Header-toggleBar"></span>
+      </button>
+
+      <nav class="Header-nav" id="nav-menu">
+          <a class="Header-navLink" href="#">¿Cómo funciona?</a>
+          <a class="btn btn--secondary" href="#login" data-modal-open="login">Iniciar sesión</a>
+          <a class="Header-navLink" href="#register" data-modal-open="register">Regístrate</a>
       </nav>
     </div>
   </header>
 
-  <main class="about-container">
+  <!-- Contenido -->
+  <main class="u-container PageContent">
     <h1>Acerca de NutriTrack</h1>
     <p><strong>NutriTrack</strong> es un startup académico del curso <em>IHC y Programación Web</em> de la UPC. Nuestro propósito es ofrecer una herramienta digital accesible que acompañe a las personas en el seguimiento de su alimentación diaria y en la adopción de hábitos saludables.</p>
 
@@ -59,26 +60,126 @@
     </div>
 
     <h2>Más información</h2>
-    <p>¿Dudas? Visita <a href="contacto.html" style="color:var(--brand);font-weight:600;">Contacto</a>.</p>
+    <p>¿Dudas? Visita la sección de  <a href="contacto.html" style="color:var(--brand);font-weight:600;">Contacto</a>.</p>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer__grid">
-      <div class="footer__block">
-        <h5>Nuestras Redes</h5>
-        <nav class="social">
-          <a href="#" aria-label="Instagram">🟣</a>
-          <a href="#" aria-label="Facebook">🔵</a>
-          <a href="#" aria-label="X / Twitter">⚫</a>
+  <!-- Footer -->
+  <footer class="Footer">
+    <div class="Footer-container u-container">
+      <div class="Footer-block">
+        <h5>Nuestras redes</h5>
+        <nav class="Footer-socials" aria-label="Redes sociales">
+          <a href="#"><img src="../assets/icons/logoInstagram.svg" alt="Instagram"></a>
+          <a href="#"><img src="../assets/icons/logoFacebook.svg" alt="Facebook"></a>
+          <a href="#"><img src="../assets/icons/logoX.svg" alt="X"></a>
         </nav>
       </div>
-      <div class="footer__block">
-        <a href="index.html#testimonios">Testimonios</a>
-        <a href="acerca.html">Acerca de NutriTrack</a>
+      <div class="Footer-block">
+        <a href="testimonios.html">Testimonios</a>
+        <a href="#">Acerca de NutriTrack</a>
         <a href="contacto.html">Contacto</a>
         <a href="privacidad.html">Políticas de privacidad</a>
       </div>
     </div>
   </footer>
+
+  <!-- Modales -->
+  <!-- Modal Iniciar Sesión -->
+  <section id="login" class="Modal" role="dialog" aria-labelledby="login-title" hidden>
+    <div class="Modal-dialog">
+      <button class="Modal-close" aria-label="Cerrar" data-modal-close>×</button>
+      
+      <h2 id="login-title" class="u-textCenter">Iniciar sesión</h2>
+      <p class="Modal-subtitle">Ingresa tus datos para continuar</p>
+      
+      <form class="Modal-form">
+        <label>
+          Correo electrónico
+          <input type="email" required placeholder="ejemplo@correo.com">
+        </label>
+        <label>
+          Contraseña
+          <input type="password" required placeholder="••••••••">
+        </label>
+        
+          <a href="#recover" class="Modal-forgot" data-modal-switch="recover">
+            ¿Olvidaste tu contraseña?</a>
+        
+        <button class="btn btn--primary btn--full" type="submit">Entrar</button>
+      </form>
+
+      <p class="Modal-footer">
+        ¿No tienes cuenta? <a href="#register" data-modal-switch="register">Regístrate</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Modal Registro -->
+  <section id="register" class="Modal" role="dialog" aria-labelledby="register-title" hidden>
+    <div class="Modal-dialog">
+      <button class="Modal-close" aria-label="Cerrar" data-modal-close>×</button>
+      
+      <h2 id="register-title" class="u-textCenter">Crear cuenta</h2>
+      <p class="Modal-subtitle">Regístrate para empezar a usar NutriTrack</p>
+      
+      <form class="Modal-form">
+        <label>
+          Nombre
+          <input type="text" required placeholder="Tu nombre">
+        </label>
+        <label>
+          Correo electrónico
+          <input type="email" required placeholder="ejemplo@correo.com">
+        </label>
+        <label>
+          Contraseña
+          <input type="password" required placeholder="••••••••">
+        </label>
+        <label>
+          Confirmar contraseña
+          <input type="password" required placeholder="••••••••">
+        </label>
+        
+        <p class="Modal-helper">La contraseña debe tener al menos 6 caracteres.</p>
+
+        <label class="Modal-checkbox">
+          <input type="checkbox" required>
+          <span>Acepto los <a href="terminos.html">términos y condiciones.</a></span>
+        </label>
+
+        <button class="btn btn--primary btn--full" type="submit">Crear cuenta</button>
+      </form>
+
+      <p class="Modal-footer">
+        ¿Ya tienes cuenta? <a href="#login" data-modal-switch="login">Inicia sesión</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Modal Recuperar Contraseña -->
+  <section id="recover" class="Modal" role="dialog" aria-labelledby="recover-title" hidden>
+    <div class="Modal-dialog">
+      <button class="Modal-close" aria-label="Cerrar" data-modal-close>×</button>
+      
+      <h2 id="recover-title" class="u-textCenter">Recuperar contraseña</h2>
+      <p class="Modal-subtitle">Ingresa tu correo y te enviaremos un enlace para restablecerla.</p>
+      
+      <form class="Modal-form">
+        <label>
+          Correo electrónico
+          <input type="email" required placeholder="ejemplo@correo.com">
+        </label>
+        
+        <button class="btn btn--primary btn--full" type="submit">Enviar enlace</button>
+      </form>
+
+      <p class="Modal-footer">
+        ¿Recordaste tu contraseña? <a href="#login" data-modal-switch="login">Inicia sesión</a>
+      </p>
+    </div>
+  </section>
+
+
+  <script src="../js/app.js" defer></script>
 </body>
 </html>

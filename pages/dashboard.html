@@ -4,101 +4,83 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NutriTrack | Dashboard</title>
-
-  <!-- Fuente -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Tu hoja de estilos global -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/main.css" />
 </head>
 <body>
 
-  <!-- Header / Nav superior (usa estilos de main.css) -->
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="index.html">NutriTrack</a>
-
-      <!-- Menú móvil sin JS (definido en main.css) -->
-      <input type="checkbox" id="nav-toggle" class="nav__checkbox" />
-      <label class="nav__toggle" for="nav-toggle" aria-label="Abrir menú">
-        <span class="nav__bar"></span>
-        <span class="nav__bar"></span>
-        <span class="nav__bar"></span>
-      </label>
-
-      <nav class="nav__menu">
-        <a class="nav__link" href="metas.html">Metas</a>
-        <a class="nav__link" href="alimentacion.html">Alimentación</a>
-        <a class="nav__link" href="reporte.html">Reporte</a>
-        <a class="nav__link" href="chatbot.html">Chatbot</a>
-        <a class="nav__link" href="configuracion.html">Configuración</a>
-      </nav>
+  <!-- Header -->
+  <header class="Header">
+    <div class="Header-container u-container">
+      <a class="Header-brand" href="../index.html">NutriTrack</a>
+      
+      <div class="Header-actions">
+        <a class="btn btn--secondary" href="registrar.html">Registrar comida</a>
+        
+        <div class="Header-profile">
+          <div class="Header-profileIcon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+          <div class="Header-dropdown">
+            <a href="usuario.html">Perfil</a>
+            <a href="configuracion.html">Configuración</a>
+            <div class="Header-dropdownDivider"></div>
+            <a href="../index.html" class="text-danger">Cerrar sesión</a>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- Layout principal del Dashboard -->
-  <div class="container app">
-    <aside class="sidebar">
-      <nav class="nav--side">
-        <a href="inicio.html" class="btn btn--nav-primary">Inicio</a>
-        <a href="metas.html" class="btn btn--nav-primary">Metas</a>
-        <a href="alimentacion.html" class="btn btn--nav-primary">Alimentación</a>
-        <a href="reporte.html" class="btn btn--nav-primary">Reporte</a>
-        <a href="chatbot.html" class="btn btn--nav-primary">Chatbot</a>
-        <a href="configuracion.html" class="btn btn--nav-primary">Configuración</a>
-        <a href="dashboard.html" aria-current="page" class="btn btn--nav-primary is-active">Dashboard</a>
+  <!-- Contenido -->
+  <main class="App-layout u-container">
+    
+    <!-- Sidebar -->
+    <aside class="App-sidebar">
+      <h2 class="App-greeting">¡Hola, <span id="dash-nombre">Sandro</span>!</h2>
+      <nav class="App-nav">
+        <a href="dashboard.html" class="is-active">Dashboard</a>
+        <a href="metas.html">Metas</a>
+        <a href="alimentos.html">Alimentos</a>
+        <a href="registros.html">Historial de registros</a>
+        <a href="progreso.html">Progreso</a>
+        <a href="chatbot.html">Chatbot</a>
       </nav>
     </aside>
 
-    <section class="content">
-      <main class="main">
-        <h2 class="greeting">Buen día, <span id="username">XXXX</span>! ¿Listo para nuevos retos?</h2>
+    <!-- Panel principal -->
+    <section class="App-main">
+      <div class="Card">
+        <h3>Resumen de hoy</h3>
+        <p>Aquí irán tus gráficos y tarjetas de resumen.</p>
+      </div>
 
-        <div class="grid grid--one">
-          <article class="card">
-            <div class="card__header">
-              <h3>Metas mensuales:</h3>
-              <a class="link" href="metas.html">Ver más</a>
-            </div>
-            <ul class="meta-list">
-              <li><b>Meta Nº 1:</b> Comprométete a cocinar la cena en casa un mínimo de 4 noches por semana durante todo el mes.</li>
-              <li><b>Meta Nº 2:</b> Realiza 20 minutos de movimiento intencional, 4 días a la semana.</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="card__header">
-              <h3>Progreso del usuario:</h3>
-            </div>
-
-            <!-- Sustituye por tu imagen de gráfico cuando la tengas -->
-            <div class="chart-ph" role="img" aria-label="Espacio reservado para el gráfico">
-              <div>
-                <p>Espacio reservado para el gráfico</p>
-                <small>Reemplaza este bloque por una imagen &lt;img&gt; del gráfico</small>
-              </div>
-            </div>
-          </article>
+      <div class="Card" style="margin-top: 1.5rem;">
+        <h3>Mis Metas</h3>
+        <div id="dash-metas-container">
+          <!-- Carga dinámica de metas -->
+          <p style="color: var(--muted);">Cargando metas...</p>
         </div>
-      </main>
+        <a href="metas.html" class="btn btn--secondary" style="margin-top: 1rem; display: inline-block; text-decoration: none;">Ver todas</a>
+      </div>
     </section>
-  </div>
 
-  <!-- Footer (reemplazado por el snippet que enviaste) -->
-  <footer class="site-footer">
-    <div class="container footergrid">
-      <div class="footerblock">
-        <h5>Nuestras Redes</h5>
-        <nav class="social">
-          <a href="#" aria-label="Instagram">🟣</a>
-          <a href="#" aria-label="Facebook">🔵</a>
-          <a href="#" aria-label="X / Twitter">⚫</a>
+  </main> <!-- CIERRE DEL MAIN AQUÍ -->
+
+  <!-- Footer -->
+  <footer class="Footer">
+    <div class="Footer-container u-container">
+      <div class="Footer-block">
+        <h5>Nuestras redes</h5>
+        <nav class="Footer-socials" aria-label="Redes sociales">
+          <a href="#"><img src="../assets/icons/logoInstagram.svg" alt="Instagram"></a>
+          <a href="#"><img src="../assets/icons/logoFacebook.svg" alt="Facebook"></a>
+          <a href="#"><img src="../assets/icons/logoX.svg" alt="X"></a>
         </nav>
       </div>
-      <div class="footer__block">
-        <a href="index.html#testimonios">Testimonios</a>
+      <div class="Footer-block">
+        <a href="testimonios.html">Testimonios</a>
         <a href="acerca.html">Acerca de NutriTrack</a>
         <a href="contacto.html">Contacto</a>
         <a href="privacidad.html">Políticas de privacidad</a>
@@ -106,5 +88,6 @@
     </div>
   </footer>
 
+  <script src="../js/app.js" defer></script>
 </body>
 </html>
