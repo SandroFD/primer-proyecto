@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NutriTrack | Configuración</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="Header">
+    <div class="Header-container u-container">
+      <a class="Header-brand" href="../index.html">NutriTrack</a>
+      
+      <div class="Header-actions">
+        <a class="btn btn--secondary" href="registrar.html">Registrar comida</a>
+        
+        <div class="Header-profile">
+          <div class="Header-profileIcon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+          <div class="Header-dropdown">
+            <a href="usuario.html">Perfil</a>
+            <a href="configuracion.html">Configuración</a>
+            <div class="Header-dropdownDivider"></div>
+            <a href="../index.html" class="text-danger">Cerrar sesión</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido -->
+  <main class="App-layout u-container">
+    
+    <!-- Sidebar -->
+    <aside class="App-sidebar">
+      <h2 class="App-greeting">¡Hola, <span id="dash-nombre">Usuario</span>!</h2>
+      <nav class="App-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="metas.html">Metas</a>
+        <a href="alimentos.html">Alimentos</a>
+        <a href="registros.html">Historial de registros</a>
+        <a href="progreso.html">Progreso</a>
+        <a href="chatbot.html">Chatbot</a>
+      </nav>
+    </aside>
+
+    <!-- Panel principal -->
+    <section class="App-main">
+      
+      <div class="Card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <h3>Configuración de Cuenta</h3>
+          <button id="btn-guardar-config" class="btn btn--primary">Guardar Cambios</button>
+        </div>
+
+        <form id="form-config" class="Form-grid">
+          <!-- Información personal -->
+          <div style="grid-column: 1 / -1;">
+            <h4 style="color: var(--brand-dark); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">Editar Información</h4>
+          </div>
+
+          <div class="Form-group">
+            <label for="config-nombre">Nombre Completo</label>
+            <input type="text" id="config-nombre" placeholder="Tu nombre" required>
+          </div>
+
+          <div class="Form-group">
+            <label for="config-email">Correo Electrónico</label>
+            <input type="email" id="config-email" placeholder="tucorreo@ejemplo.com" disabled style="background-color: #f0f0f0; cursor: not-allowed;">
+            <small style="color: var(--muted);">El correo no se puede modificar.</small>
+          </div>
+
+          <!-- Datos físicos -->
+          <div style="grid-column: 1 / -1; margin-top: 1rem;">
+            <h4 style="color: var(--brand-dark); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">Datos Físicos</h4>
+          </div>
+
+          <div class="Form-group">
+            <label for="config-edad">Edad (años)</label>
+            <input type="number" id="config-edad" placeholder="Ej. 25" min="10" max="120">
+          </div>
+
+          <div class="Form-group">
+            <label for="config-peso">Peso (kg)</label>
+            <input type="number" id="config-peso" placeholder="Ej. 70" min="30" max="300" step="0.1">
+          </div>
+
+          <div class="Form-group">
+            <label for="config-altura">Altura (cm)</label>
+            <input type="number" id="config-altura" placeholder="Ej. 175" min="100" max="250">
+          </div>
+
+          <div class="Form-group">
+            <label for="config-genero">Género</label>
+            <select id="config-genero">
+              <option value="">Seleccionar</option>
+              <option value="masculino">Masculino</option>
+              <option value="femenino">Femenino</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <!-- Objetivos -->
+          <div style="grid-column: 1 / -1; margin-top: 1rem;">
+            <h4 style="color: var(--brand-dark); margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;">Objetivos y Actividad</h4>
+          </div>
+
+          <div class="Form-group">
+            <label for="config-actividad">Nivel de Actividad</label>
+            <select id="config-actividad">
+              <option value="sedentario">Sedentario (Poco o nada de ejercicio)</option>
+              <option value="ligero">Ligero (Ejercicio 1-3 días/semana)</option>
+              <option value="moderado">Moderado (Ejercicio 3-5 días/semana)</option>
+              <option value="activo">Activo (Ejercicio 6-7 días/semana)</option>
+              <option value="muy_activo">Muy Activo (Trabajo físico o doble sesión)</option>
+            </select>
+          </div>
+
+          <div class="Form-group">
+            <label for="config-objetivo">Objetivo Principal</label>
+            <select id="config-objetivo">
+              <option value="perder_peso">Perder Peso</option>
+              <option value="mantener">Mantener Peso</option>
+              <option value="ganar_musculo">Ganar Músculo</option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <!-- Sección de Seguridad -->
+      <div class="Card" style="margin-top: 2rem;">
+        <h4 style="color: var(--dark); margin-bottom: 1rem;">Seguridad</h4>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <p style="font-weight: 600;">Contraseña</p>
+            <p style="font-size: 0.9rem; color: var(--muted);">********</p>
+          </div>
+          <button class="btn btn--secondary" onclick="alert('Simulación: Se ha enviado un correo para restablecer tu contraseña.')">Cambiar Contraseña</button>
+        </div>
+        
+        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+            <p style="font-weight: 600; color: #e74c3c;">Zona de Peligro</p>
+            <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem;">Una vez que elimines tu cuenta, no hay vuelta atrás.</p>
+            <button class="btn btn--light" style="color: #e74c3c; border-color: #e74c3c;" onclick="if(confirm('¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer.')) alert('Cuenta eliminada (Simulación).');">Eliminar Cuenta</button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="Footer">
+    <div class="Footer-container u-container">
+      <div class="Footer-block">
+        <h5>Nuestras redes</h5>
+        <nav class="Footer-socials" aria-label="Redes sociales">
+          <a href="#"><img src="../assets/icons/logoInstagram.svg" alt="Instagram"></a>
+          <a href="#"><img src="../assets/icons/logoFacebook.svg" alt="Facebook"></a>
+          <a href="#"><img src="../assets/icons/logoX.svg" alt="X"></a>
+        </nav>
+      </div>
+      <div class="Footer-block">
+        <a href="testimonios.html">Testimonios</a>
+        <a href="acerca.html">Acerca de NutriTrack</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="privacidad.html">Políticas de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js" defer></script>
+</body>
+</html>

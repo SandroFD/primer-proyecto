@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Testimonios — NutriTrack</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="Header">
+    <div class="Header-container u-container">
+      <a class="Header-brand" href="../index.html">NutriTrack</a>
+      <button class="Header-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span class="Header-toggleBar"></span>
+          <span class="Header-toggleBar"></span>
+          <span class="Header-toggleBar"></span>
+      </button>
+      <nav class="Header-nav" id="nav-menu">
+          <a class="Header-navLink" href="acerca.html">¿Cómo funciona?</a>
+          <a class="btn btn--secondary" href="#login" data-modal-open="login">Iniciar sesión</a>
+          <a class="Header-navLink" href="#register" data-modal-open="register">Regístrate</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenido -->
+  <main class="u-container" style="padding-block: 2.5rem;">
+    <div class="PageHeader">
+      <h1>Testimonios</h1>
+      <p>Historias de nuestra comunidad, ordenadas del más reciente al más antiguo.</p>
+    </div>
+
+    <!-- Lista de testimonios -->
+    <section id="testimonials-list" class="TestimonialsPage-grid" aria-live="polite"></section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="Footer">
+    <div class="Footer-container u-container">
+      <div class="Footer-block">
+        <h5>Nuestras redes</h5>
+        <nav class="Footer-socials" aria-label="Redes sociales">
+          <a href="#"><img src="../assets/icons/logoInstagram.svg" alt="Instagram"></a>
+          <a href="#"><img src="../assets/icons/logoFacebook.svg" alt="Facebook"></a>
+          <a href="#"><img src="../assets/icons/logoX.svg" alt="X"></a>
+        </nav>
+      </div>
+      <div class="Footer-block">
+        <a href="testimonios.html">Testimonios</a>
+        <a href="acerca.html">Acerca de NutriTrack</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="privacidad.html">Políticas de privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modales -->
+  <section id="login" class="Modal" role="dialog" aria-labelledby="login-title" hidden>...</section>
+  <section id="register" class="Modal" role="dialog" aria-labelledby="register-title" hidden>...</section>
+  <section id="recover" class="Modal" role="dialog" aria-labelledby="recover-title" hidden>...</section>
+  
+  <!-- Scripts -->
+  <script src="../js/app.js" defer></script>
+  <script>
+    // Renderizado de testimonios
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      function formatDate(isoDate) {
+        try {
+          return new Date(isoDate + 'T00:00:00').toLocaleDateString('es-PE', { day: '2-digit', month: 'short', year: 'numeric' });
+        } catch(e) { return isoDate; }
+      }
+
+      const listContainer = document.getElementById('testimonials-list');
+      const testimonialsData = (window.TESTIMONIOS || [])
+        .slice()
+        .sort((a, b) => new Date(b.date) - new Date(a.date)); // Ordenar por fecha, más reciente primero
+
+      if (listContainer && testimonialsData.length > 0) {
+        testimonialsData.forEach(testimonial => {
+          const card = document.createElement('article');
+          // Tarjeta de testimonio
+          card.className = 'TestimonialCard';
+          card.innerHTML = `
+            <p>“${testimonial.text}”</p>
+            <footer>
+              <cite class="TestimonialCard-author">${testimonial.name}</cite>
+              <span class="TestimonialCard-meta">${testimonial.age} años • ${formatDate(testimonial.date)}</span>
+            </footer>
+          `;
+          listContainer.appendChild(card);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -21,99 +21,55 @@
   
 </head>
 <body>
-  <!-- Header con menú móvil 100% CSS -->
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="index.html">NutriTrack</a>
 
-      <!-- Checkbox (CSS-only) -->
-        <input type="checkbox" id="nav-toggle" class="nav__checkbox" aria-hidden="true">
-        <label for="nav-toggle" class="nav__toggle" aria-label="Abrir menú">
-            <span class="nav__bar"></span><span class="nav__bar"></span><span class="nav__bar"></span>
-        </label>
+  <header class="Header">
+    <div class="Header-container u-container">
+      <a class="Header-brand" href="index.html">NutriTrack</a>
 
-        <nav class="nav__menu" aria-label="Principal">
-            <a class="nav__link" href="pages/acerca.html">Infórmate</a> <!-- modificar luego -->
-            <a class="nav__link" href="index.html">Explorar</a>
-            <a class="btn btn--nav-primary" href="#login">Iniciar sesión</a>
-            <a class="nav__link" href="#register">Regístrate</a>
-        </nav>
+      <!-- Botón semántico para el menú móvil -->
+      <button class="Header-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span class="Header-toggleBar"></span>
+          <span class="Header-toggleBar"></span>
+          <span class="Header-toggleBar"></span>
+      </button>
+
+      <nav class="Header-nav" id="nav-menu">
+          <a class="Header-navLink" href="pages/acerca.html">¿Cómo funciona?</a>
+          <a class="btn btn--secondary" href="#login" data-modal-open="login">Iniciar sesión</a>
+          <a class="Header-navLink" href="#register" data-modal-open="register">Regístrate</a>
+      </nav>
     </div>
   </header>
 
   <main>
-    <!-- Hero -->
-    <section class="hero container">
-      <div class="hero__img">
+    <section class="Hero u-container">
+      <div class="Hero-image">
         <img src="assets/img/hero-bowl.png" alt="Bowl con alimentos saludables">
       </div>
-      <div class="hero__copy">
-        <h1>Es hora de mejorar tu estilo de vida</h1>
-        <p>Con NutriTrack tienes las herramientas necesarias para<br> mejorar tu salud alimenticia.</p>
-        <a class="btn btn--primary" href="pages/acerca.html">Empezar ahora</a> <!-- modificar luego -->
+      <div class="Hero-copy">
+        <h1 class="Hero-title">Es hora de mejorar tu estilo de vida</h1>
+        <p class="Hero-text">Con NutriTrack tienes las herramientas necesarias para mejorar tu salud alimenticia.</p>
+        <a class="btn btn--primary btn--xl" href="#register" data-modal-open="register">Empezar ahora</a>
       </div>
     </section>
 
-    <!-- ¿Por qué usar? -->
-    <section id="explorar" class="features">
-      <div class="container">
-        <h2>¿Por qué usar NutriTrack?</h2>
-
-        <div class="grid">
-          <!-- 1 -->
-          <article class="card">
-            <div class="icon">
-              <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
-                <circle cx="26" cy="26" r="18" fill="#E8F6EF"></circle>
-                <path d="M26 12a14 14 0 1 1 0 28 14 14 0 0 1 0-28Z" fill="none" stroke="#2FA46E" stroke-width="3"/>
-                <line x1="38" y1="38" x2="54" y2="54" stroke="#2FA46E" stroke-width="6" stroke-linecap="round"/>
-              </svg>
-            </div>
+    <section id="explorar" class="Features">
+      <div class="u-container">
+        <h2 class="Features-title">¿Por qué usar NutriTrack?</h2>
+        <div class="Features-grid">
+          <article class="Card">
             <h3>Información Nutricional</h3>
             <p>Explora de forma sencilla una gran variedad de información sobre alimentos y dietas recomendadas.</p>
           </article>
-
-          <!-- 2 -->
-          <article class="card">
-            <div class="icon">
-              <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
-                <rect x="10" y="16" width="44" height="36" rx="6" fill="#E8F6EF" stroke="#2FA46E" stroke-width="3"/>
-                <line x1="20" y1="12" x2="20" y2="22" stroke="#2FA46E" stroke-width="6" stroke-linecap="round"/>
-                <line x1="44" y1="12" x2="44" y2="22" stroke="#2FA46E" stroke-width="6" stroke-linecap="round"/>
-                <polyline points="22,38 28,44 42,30" fill="none" stroke="#2FA46E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="52" cy="48" r="8" fill="#FF6B6B"/>
-                <line x1="52" y1="38" x2="56" y2="34" stroke="#2FA46E" stroke-width="3" stroke-linecap="round"/>
-              </svg>
-            </div>
+          <article class="Card">
             <h3>Control diario sin esfuerzo</h3>
             <p>Registra tus comidas, visualiza tu evolución y descarga reportes.</p>
           </article>
-
-          <!-- 3 -->
-          <article class="card">
-            <div class="icon">
-              <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
-                <rect x="14" y="10" width="36" height="48" rx="6" fill="#E8F6EF" stroke="#2FA46E" stroke-width="3"/>
-                <line x1="24" y1="24" x2="40" y2="24" stroke="#2FA46E" stroke-width="3" stroke-linecap="round"/>
-                <line x1="24" y1="32" x2="40" y2="32" stroke="#2FA46E" stroke-width="3" stroke-linecap="round"/>
-                <line x1="24" y1="40" x2="36" y2="40" stroke="#2FA46E" stroke-width="3" stroke-linecap="round"/>
-                <polyline points="20,46 24,50 32,42" fill="none" stroke="#2FA46E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
+          <article class="Card">
             <h3>Metas a tu ritmo</h3>
             <p>Crea, ajusta o elimina objetivos en cualquier momento.</p>
           </article>
-
-          <!-- 4 -->
-          <article class="card">
-            <div class="icon">
-              <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
-                <path d="M10 18c0-4 3-7 7-7h30c4 0 7 3 7 7v18c0 4-3 7-7 7H27l-9 9v-9h-1c-4 0-7-3-7-7V18Z" fill="#E8F6EF" stroke="#2FA46E" stroke-width="3" stroke-linejoin="round"/>
-                <circle cx="26" cy="30" r="3" fill="#2FA46E"/>
-                <circle cx="38" cy="30" r="3" fill="#2FA46E"/>
-                <path d="M24 38c2.5 2 6.5 2 9 0" stroke="#2FA46E" stroke-width="3" stroke-linecap="round"/>
-              </svg>
-            </div>
+          <article class="Card">
             <h3>Soporte constante</h3>
             <p>Resuelve dudas con contenidos y acompañamiento.</p>
           </article>
@@ -121,97 +77,152 @@
       </div>
     </section>
 
-    <!-- Testimonios (estáticos aun por completar) -->
-    <section id="testimonios" class="testimonials">
-      <div class="container">
-        <h2>Testimonios</h2>
-
-        <div class="t-grid">
-          <article class="testimonial">
-            <h4>Valeria Torres</h4>
-            <p class="meta">06 oct 2025 · Lima</p>
-            <p>“En dos meses logré mantener un peso saludable y mis análisis mejoraron. La visualización de progresos me motivó muchísimo.”</p>
-          </article>
-
-          <article class="testimonial">
-            <h4>Diego Huamán</h4>
-            <p class="meta">28 sep 2025 · Arequipa</p>
-            <p>“La interfaz es clara y sin complicaciones. Registrar mis comidas y ver metas diarias ha sido sencillo.”</p>
-          </article>
-
-          <article class="testimonial">
-            <h4>Camila Rojas</h4>
-            <p class="meta">14 sep 2025 · Trujillo</p>
-            <p>“Me ayudó a organizar mis horarios y mejorar mi digestión con hábitos simples.”</p>
-          </article>
-
-          <article class="testimonial testimonial--cta">
-            <h4>¿Quieres ver más?</h4>
-            <p>Explora el listado completo.</p>
-            <a class="btn btn--primary" href="testimonios.html">Ver testimonios</a>
-          </article>
+    <section class="Testimonials">
+        <div class="u-container">
+            <h2 class="Testimonials-title">Testimonios</h2>
+            <div class="Testimonials-grid">
+              <article class="TestimonialCard">
+                <p>“En dos meses logré mantener un peso saludable y mis análisis mejoraron. La visualización de progresos me motivó muchísimo.”</p>
+                <footer>
+                    <cite class="TestimonialCard-author">Valeria Torres</cite>
+                    <span class="TestimonialCard-meta">Lima</span>
+                </footer>
+              </article>
+              <article class="TestimonialCard">
+                <p>“La interfaz es clara y sin complicaciones. Registrar mis comidas y ver metas diarias ha sido sencillo.”</p>
+                <footer>
+                    <cite class="TestimonialCard-author">Diego Huamán</cite>
+                    <span class="TestimonialCard-meta">Arequipa</span>
+                </footer>
+              </article>
+              <article class="TestimonialCard TestimonialCard--cta">
+                <h3>¿Quieres ver más?</h3>
+                <a class="btn btn--primary" href="pages/testimonios.html">Ver testimonios</a>
+              </article>
+            </div>
         </div>
-      </div>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer__grid">
-      <div class="footer__block">
-        <h5>Nuestras Redes</h5>
-        <nav class="social" aria-label="Redes sociales">
-          <a href="#" aria-label="Instagram">🟣</a>
-          <a href="#" aria-label="Facebook">🔵</a>
-          <a href="#" aria-label="X / Twitter">⚫</a>
+  <footer class="Footer">
+    <div class="Footer-container u-container">
+
+      <!-- BLOQUE IZQUIERDO -->
+      <div class="Footer-block">
+        <h5>Nuestras redes</h5>
+        <nav class="Footer-socials" aria-label="Redes sociales">
+          <a href="#"><img src="assets/icons/logoInstagram.svg" alt="Instagram"></a>
+          <a href="#"><img src="assets/icons/logoFacebook.svg" alt="Facebook"></a>
+          <a href="#"><img src="assets/icons/logoX.svg" alt="X"></a>
         </nav>
       </div>
-      <div class="footer__block">
-        <a href="pages/testimonios.html">Testimonios</a>        <!-- modificar luego -->
+      <!-- BLOQUE DERECHO -->
+      <div class="Footer-block">
+        <a href="pages/testimonios.html">Testimonios</a>
         <a href="pages/acerca.html">Acerca de NutriTrack</a>
         <a href="pages/contacto.html">Contacto</a>
         <a href="pages/privacidad.html">Políticas de privacidad</a>
       </div>
+
     </div>
   </footer>
 
-  <!-- Modal: Iniciar sesión (CSS :target) -->
-<section id="login" class="modal" aria-labelledby="login-title" role="dialog">
-  <div class="modal__dialog">
-    <a class="modal__close" href="#" aria-label="Cerrar">×</a>
-    <h2 id="login-title">Iniciar sesión</h2>
-    <form class="modal__form" action="pages/dashboard.html" method="get">
-      <label>Correo
-        <input type="email" required placeholder="tucorreo@ejemplo.com">
-      </label>
-      <label>Contraseña
-        <input type="password" required placeholder="••••••••">
-      </label>
-      <button class="btn btn--primary" type="submit">Entrar</button>
-    </form>
-  </div>
-</section>
+  <!-- Modales -->
+  <!-- Modal Iniciar Sesión -->
+  <section id="login" class="Modal" role="dialog" aria-labelledby="login-title" hidden>
+    <div class="Modal-dialog">
+      <button class="Modal-close" aria-label="Cerrar" data-modal-close>×</button>
+      
+      <h2 id="login-title" class="u-textCenter">Iniciar sesión</h2>
+      <p class="Modal-subtitle">Ingresa tus datos para continuar</p>
+      
+      <form class="Modal-form">
+        <label>
+          Correo electrónico
+          <input type="email" required placeholder="ejemplo@correo.com">
+        </label>
+        <label>
+          Contraseña
+          <input type="password" required placeholder="••••••••">
+        </label>
+        
+          <a href="#recover" class="Modal-forgot" data-modal-switch="recover">
+            ¿Olvidaste tu contraseña?</a>
+        
+        <button class="btn btn--primary btn--full" type="submit">Entrar</button>
+      </form>
 
-<!-- Modal: Regístrate -->
-<section id="register" class="modal" aria-labelledby="register-title" role="dialog">
-  <div class="modal__dialog">
-    <a class="modal__close" href="#" aria-label="Cerrar">×</a>
-    <h2 id="register-title">Crea tu cuenta</h2>
-    <form class="modal__form" action="index.html" method="get">
-      <label>Nombre
-        <input type="text" required placeholder="Tu nombre">
-      </label>
-      <label>Correo
-        <input type="email" required placeholder="tucorreo@ejemplo.com">
-      </label>
-      <label>Contraseña
-        <input type="password" required placeholder="Mínimo 8 caracteres">
-      </label>
-      <button class="btn btn--primary" type="submit">Registrarme</button>
-    </form>
-  </div>
-</section>
+      <p class="Modal-footer">
+        ¿No tienes cuenta? <a href="#register" data-modal-switch="register">Regístrate</a>
+      </p>
+    </div>
+  </section>
 
+  <!-- Modal Registro -->
+  <section id="register" class="Modal" role="dialog" aria-labelledby="register-title" hidden>
+    <div class="Modal-dialog">
+      <button class="Modal-close" aria-label="Cerrar" data-modal-close>×</button>
+      
+      <h2 id="register-title" class="u-textCenter">Crear cuenta</h2>
+      <p class="Modal-subtitle">Regístrate para empezar a usar NutriTrack</p>
+      
+      <form class="Modal-form">
+        <label>
+          Nombre
+          <input type="text" required placeholder="Tu nombre">
+        </label>
+        <label>
+          Correo electrónico
+          <input type="email" required placeholder="ejemplo@correo.com">
+        </label>
+        <label>
+          Contraseña
+          <input type="password" required placeholder="••••••••">
+        </label>
+        <label>
+          Confirmar contraseña
+          <input type="password" required placeholder="••••••••">
+        </label>
+        
+        <p class="Modal-helper">La contraseña debe tener al menos 6 caracteres.</p>
 
+        <label class="Modal-checkbox">
+          <input type="checkbox" required>
+          <span>Acepto los <a href="pages/terminos.html">términos y condiciones.</a></span>
+        </label>
+
+        <button class="btn btn--primary btn--full" type="submit">Crear cuenta</button>
+      </form>
+
+      <p class="Modal-footer">
+        ¿Ya tienes cuenta? <a href="#login" data-modal-switch="login">Inicia sesión</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Modal Recuperar Contraseña -->
+  <section id="recover" class="Modal" role="dialog" aria-labelledby="recover-title" hidden>
+    <div class="Modal-dialog">
+      <button class="Modal-close" aria-label="Cerrar" data-modal-close>×</button>
+      
+      <h2 id="recover-title" class="u-textCenter">Recuperar contraseña</h2>
+      <p class="Modal-subtitle">Ingresa tu correo y te enviaremos un enlace para restablecerla.</p>
+      
+      <form class="Modal-form">
+        <label>
+          Correo electrónico
+          <input type="email" required placeholder="ejemplo@correo.com">
+        </label>
+        
+        <button class="btn btn--primary btn--full" type="submit">Enviar enlace</button>
+      </form>
+
+      <p class="Modal-footer">
+        ¿Recordaste tu contraseña? <a href="#login" data-modal-switch="login">Inicia sesión</a>
+      </p>
+    </div>
+  </section>
+
+  <script src="js/app.js" defer></script>
 </body>
 </html>

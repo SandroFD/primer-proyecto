@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NutriTrack | Mis Metas</title>
+  <title>NutriTrack | Registrar Comida</title>
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/main.css" />
@@ -41,7 +42,7 @@
       <h2 class="App-greeting">¡Hola, <span id="dash-nombre">Usuario</span>!</h2>
       <nav class="App-nav">
         <a href="dashboard.html">Dashboard</a>
-        <a href="metas.html" class="is-active">Metas</a>
+        <a href="metas.html">Metas</a>
         <a href="alimentos.html">Alimentos</a>
         <a href="registros.html">Historial de registros</a>
         <a href="progreso.html">Progreso</a>
@@ -52,30 +53,52 @@
     <!-- Panel principal -->
     <section class="App-main">
       
-      <!-- Formulario -->
-      <div class="Card" style="margin-bottom: 1.5rem; text-align: left;">
-        <h3>Agregar Nueva Meta</h3>
-        <form id="form-meta" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
-          <div style="flex: 1; min-width: 200px;">
-            <input type="text" id="meta-titulo" placeholder="Ej: Beber 2L de agua" required 
+      <div class="Card" style="text-align: left; max-width: 600px;">
+        <h3>Registrar Nueva Comida</h3>
+        <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem;">Añade los detalles de tu comida para llevar un control diario.</p>
+        
+        <form id="form-registro-comida" style="display: flex; flex-direction: column; gap: 1.2rem;">
+          
+          <!-- Fecha -->
+          <div>
+            <label for="reg-fecha" style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Fecha</label>
+            <input type="date" id="reg-fecha" required 
                    style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px;">
           </div>
-          <div style="flex: 1; min-width: 200px;">
-            <input type="text" id="meta-desc" placeholder="Descripción (opcional)" 
+
+          <!-- Tipo -->
+          <div>
+            <label for="reg-tipo" style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Momento del día</label>
+            <select id="reg-tipo" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
+              <option value="Desayuno">Desayuno</option>
+              <option value="Almuerzo">Almuerzo</option>
+              <option value="Cena">Cena</option>
+              <option value="Snack">Snack</option>
+            </select>
+          </div>
+
+          <!-- Detalle -->
+          <div>
+            <label for="reg-detalle" style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">¿Qué comiste?</label>
+            <input type="text" id="reg-detalle" placeholder="Ej: Ensalada César con pollo" required 
                    style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px;">
           </div>
-          <button type="submit" class="btn btn--primary">Guardar</button>
+
+          <!-- Calorías -->
+          <div>
+            <label for="reg-calorias" style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Calorías (aprox)</label>
+            <input type="number" id="reg-calorias" placeholder="Ej: 450" required 
+                   style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px;">
+          </div>
+
+          <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+            <button type="submit" class="btn btn--primary" style="flex: 1;">Guardar Registro</button>
+            <a href="dashboard.html" class="btn btn--secondary" style="flex: 1; text-align: center; text-decoration: none;">Cancelar</a>
+          </div>
+
         </form>
       </div>
 
-      <!-- Lista de metas -->
-      <div class="Card" style="text-align: left;">
-        <h3>Mis Metas Activas</h3>
-        <div id="lista-metas" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
-          <!-- Carga dinámica -->
-          <p style="color: var(--muted);">Cargando metas...</p>
-        </div>
-      </div>
     </section>
 
   </main>
@@ -101,5 +124,14 @@
   </footer>
 
   <script src="../js/app.js" defer></script>
+  <script>
+    // Script inline para establecer la fecha de hoy por defecto
+    document.addEventListener('DOMContentLoaded', () => {
+      const dateInput = document.getElementById('reg-fecha');
+      if(dateInput) {
+        dateInput.valueAsDate = new Date();
+      }
+    });
+  </script>
 </body>
 </html>
