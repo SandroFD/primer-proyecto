@@ -11,23 +11,23 @@
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Encabezado -->
   <header class="Header">
     <div class="Header-container u-container">
-      <a class="Header-brand" href="../index.html">NutriTrack</a>
+      <a class="Header-brand" href="dashboard.html">NutriTrack</a>
       
       <div class="Header-actions">
-        <a class="btn btn--secondary" href="registrar.html">Registrar comida</a>
+        <a class="btn btn--tertiary btn--sm" href="registrar.html">Registra tu comida</a>
         
         <div class="Header-profile">
           <div class="Header-profileIcon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <img src="../assets/icons/user.svg" alt="Perfil" class="Header-userIcon">
           </div>
           <div class="Header-dropdown">
             <a href="usuario.html">Perfil</a>
             <a href="configuracion.html">Configuración</a>
             <div class="Header-dropdownDivider"></div>
-            <a href="../index.html" class="text-danger">Cerrar sesión</a>
+            <a href="../index.html" class="Header-logout">Cerrar sesión</a>
           </div>
         </div>
       </div>
@@ -53,27 +53,68 @@
     <!-- Panel principal -->
     <section class="App-main">
       
-      <!-- Formulario -->
+      <!-- Formulario / Buscador -->
       <div class="Card" style="margin-bottom: 1.5rem; text-align: left;">
         <h3>Explorar Alimentos</h3>
-        <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem;">Busca y agrega alimentos a tu catálogo personal.</p>
+        <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; margin-inline: 0; max-width: none;">
+          Busca en nuestra base de datos o agrega alimentos manualmente a tu catálogo.
+        </p>
         
-        <form id="form-alimento" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <!-- Buscador -->
+        <div style="display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+          <input type="text" id="buscador-alimento" placeholder="Buscar (ej: Plátano, Huevo...)" 
+                 style="flex: 1; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px;">
+          <button id="btn-buscar" class="btn btn--primary">Buscar</button>
+        </div>
+
+        <!-- Resultados -->
+        <div id="resultados-busqueda" style="display: grid; gap: 0.5rem; margin-bottom: 1rem;"></div>
+
+        <!-- Toggle Manual -->
+        <div style="margin-top: 1rem;">
+          <button id="btn-toggle-manual" class="btn btn--secondary btn--sm">
+            ¿No está? Agregar manualmente
+          </button>
+        </div>
+
+        <!-- Formulario Manual (Oculto por defecto) -->
+        <form id="form-alimento" style="display: none; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee;">
           <div style="flex: 2; min-width: 200px;">
-            <input type="text" id="alimento-nombre" placeholder="Nombre del alimento (ej: Manzana)" required 
+            <input type="text" id="alimento-nombre" placeholder="Nombre del alimento" required 
                    style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px;">
+          </div>
+          <div style="flex: 1; min-width: 150px;">
+            <select id="alimento-categoria" required class="Select">
+              <option value="Otros">Otros</option>
+              <option value="Proteínas">Proteínas</option>
+              <option value="Verduras">Verduras</option>
+              <option value="Frutas">Frutas</option>
+              <option value="Lácteos">Lácteos</option>
+              <option value="Carbohidratos">Carbohidratos</option>
+            </select>
           </div>
           <div style="flex: 1; min-width: 120px;">
-            <input type="number" id="alimento-calorias" placeholder="Kcal (aprox)" required 
+            <input type="number" id="alimento-calorias" placeholder="Kcal" required 
                    style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px;">
           </div>
-          <button type="submit" class="btn btn--primary">Agregar</button>
+          <button type="submit" class="btn btn--primary">Guardar</button>
         </form>
       </div>
 
       <!-- Lista de alimentos -->
       <div class="Card" style="text-align: left;">
-        <h3>Mi Catálogo de Alimentos</h3>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+          <h3 style="margin-bottom: 0;">Mi Catálogo de Alimentos</h3>
+          <select id="filtro-categoria" class="Select" style="width: auto;">
+            <option value="todos">Todas las categorías</option>
+            <option value="Proteínas">Proteínas</option>
+            <option value="Verduras">Verduras</option>
+            <option value="Frutas">Frutas</option>
+            <option value="Lácteos">Lácteos</option>
+            <option value="Carbohidratos">Carbohidratos</option>
+            <option value="Otros">Otros</option>
+          </select>
+        </div>
         <div id="lista-alimentos" style="margin-top: 1rem; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
           <!-- Carga dinámica -->
           <p style="color: var(--muted);">Cargando catálogo...</p>
@@ -84,7 +125,7 @@
 
   </main>
 
-  <!-- Footer -->
+  <!-- Pie de página -->
   <footer class="Footer">
     <div class="Footer-container u-container">
       <div class="Footer-block">
@@ -103,6 +144,19 @@
       </div>
     </div>
   </footer>
+
+  <!-- Templates -->
+  <template id="template-food-card">
+    <div class="FoodCard">
+      <div class="FoodCard-icon"></div>
+      <h4 class="FoodCard-title"></h4>
+      <p class="FoodCard-cal"></p>
+      <div class="FoodCard-actions">
+        <button class="btn btn--secondary btn--sm btn--block btn-register-food">Registrar consumo</button>
+        <button class="btn btn--danger btn--sm btn-delete-food">Eliminar</button>
+      </div>
+    </div>
+  </template>
 
   <script src="../js/app.js" defer></script>
 </body>

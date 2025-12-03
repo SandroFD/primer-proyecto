@@ -11,30 +11,30 @@
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- 1. Header -->
   <header class="Header">
     <div class="Header-container u-container">
-      <a class="Header-brand" href="../index.html">NutriTrack</a>
+      <a class="Header-brand" href="dashboard.html">NutriTrack</a>
       
       <div class="Header-actions">
-        <a class="btn btn--secondary" href="registrar.html">Registrar comida</a>
+        <a class="btn btn--tertiary btn--sm" href="registrar.html">Registra tu comida</a>
         
         <div class="Header-profile">
           <div class="Header-profileIcon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <img src="../assets/icons/user.svg" alt="Perfil" class="Header-userIcon">
           </div>
           <div class="Header-dropdown">
             <a href="usuario.html">Perfil</a>
             <a href="configuracion.html">Configuración</a>
             <div class="Header-dropdownDivider"></div>
-            <a href="../index.html" class="text-danger">Cerrar sesión</a>
+            <a href="../index.html" class="Header-logout">Cerrar sesión</a>
           </div>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Contenido -->
+  <!-- 2. Contenido principal -->
   <main class="App-layout u-container">
     
     <!-- Sidebar -->
@@ -50,60 +50,94 @@
       </nav>
     </aside>
 
-    <!-- Panel principal -->
+    <!-- Contenido: Formulario de Registro -->
     <section class="App-main">
       
-      <div class="Card" style="text-align: left; max-width: 600px;">
-        <h3>Registrar Nueva Comida</h3>
-        <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem;">Añade los detalles de tu comida para llevar un control diario.</p>
+      <div class="Register-grid">
         
-        <form id="form-registro-comida" style="display: flex; flex-direction: column; gap: 1.2rem;">
+        <!-- Columna 1: Análisis Inteligente -->
+        <div class="Card Register-card">
+          <h3>Análisis Inteligente</h3>
+          <p style="font-size: 0.9rem; color: var(--muted);">
+            Sube una foto y obtén las calorías automáticamente (estimaciones por IA).
+          </p>
           
-          <!-- Fecha -->
-          <div>
-            <label for="reg-fecha" style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Fecha</label>
-            <input type="date" id="reg-fecha" required 
-                   style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px;">
-          </div>
+          <div class="Register-upload">
+            <div class="Upload-preview" id="upload-preview">
+              <span>📷</span>
+            </div>
+            
+            <input type="file" id="input-imagen-comida" accept="image/*" 
+                   style="padding: 0.5rem; border: 1px dashed #ccc; border-radius: 8px; width: 100%;">
+            
+            <button type="button" id="btn-analizar-comida" class="btn btn--primary">
+              Analizar comida
+            </button>
 
-          <!-- Tipo -->
-          <div>
-            <label for="reg-tipo" style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Momento del día</label>
-            <select id="reg-tipo" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
-              <option value="Desayuno">Desayuno</option>
-              <option value="Almuerzo">Almuerzo</option>
-              <option value="Cena">Cena</option>
-              <option value="Snack">Snack</option>
-            </select>
+            <div style="text-align: center; margin-top: 1rem; border-top: 1px solid #eee; padding-top: 1rem;">
+              <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;">
+                ¿Prefieres escribirlo tú mismo?
+              </p>
+              <button type="button" id="btn-habilitar-manual" class="btn btn--secondary">
+                Ingresar datos manualmente
+              </button>
+            </div>
           </div>
+        </div>
 
-          <!-- Detalle -->
-          <div>
-            <label for="reg-detalle" style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">¿Qué comiste?</label>
-            <input type="text" id="reg-detalle" placeholder="Ej: Ensalada César con pollo" required 
-                   style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px;">
-          </div>
+        <!-- Columna 2: Registro Manual -->
+        <div class="Card Register-card">
+          <h3>Información nutricional</h3>
+          
+          <form id="form-registro-comida" class="Register-form">
+            
+            <!-- Fecha -->
+            <div>
+              <label for="reg-fecha" style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Fecha</label>
+              <input type="date" id="reg-fecha" required disabled aria-disabled="true"
+                     style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; background-color: #f5f5f5; cursor: not-allowed;">
+            </div>
 
-          <!-- Calorías -->
-          <div>
-            <label for="reg-calorias" style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Calorías (aprox)</label>
-            <input type="number" id="reg-calorias" placeholder="Ej: 450" required 
-                   style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px;">
-          </div>
+            <!-- Tipo -->
+            <div>
+              <label for="reg-tipo" style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Momento del día</label>
+              <select id="reg-tipo" required disabled class="Select">
+                <option value="Desayuno">Desayuno</option>
+                <option value="Almuerzo">Almuerzo</option>
+                <option value="Cena">Cena</option>
+                <option value="Snack">Snack</option>
+              </select>
+            </div>
 
-          <div style="margin-top: 1rem; display: flex; gap: 1rem;">
-            <button type="submit" class="btn btn--primary" style="flex: 1;">Guardar Registro</button>
-            <a href="dashboard.html" class="btn btn--secondary" style="flex: 1; text-align: center; text-decoration: none;">Cancelar</a>
-          </div>
+            <!-- Detalle -->
+            <div>
+              <label for="reg-detalle" style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">¿Qué comiste?</label>
+              <input type="text" id="reg-detalle" placeholder="Ej: Ensalada César con pollo" required disabled
+                     style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9;">
+            </div>
 
-        </form>
+            <!-- Calorías -->
+            <div>
+              <label for="reg-calorias" style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;">Calorías (aprox)</label>
+              <input type="number" id="reg-calorias" placeholder="Ej: 450" required disabled
+                     style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9;">
+            </div>
+
+            <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+              <button type="submit" id="btn-guardar-registro" class="btn btn--primary" style="flex: 1;" disabled>Registrar</button>
+              <a href="dashboard.html" class="btn btn--light" style="flex: 1; text-align: center; text-decoration: none;">Cancelar</a>
+            </div>
+
+          </form>
+        </div>
+
       </div>
 
     </section>
 
   </main>
 
-  <!-- Footer -->
+  <!-- 3. Footer -->
   <footer class="Footer">
     <div class="Footer-container u-container">
       <div class="Footer-block">

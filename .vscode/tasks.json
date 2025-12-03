@@ -1,0 +1,22 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "append_css",
+			"type": "shell",
+			"command": "echo \"/* Estilos para filas de formulario en modal */\n.Modal-form-row {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  gap: 1rem;\n}\n\n/* Asegurar que los select tengan el mismo estilo que los inputs */\n.Modal-form select {\n  border: 1px solid #D0D5D9;\n  border-radius: 12px;\n  padding: .8rem 1rem;\n  font-size: .95rem;\n  color: var(--dark);\n  transition: border-color .2s;\n  background-color: #fff;\n  width: 100%;\n  appearance: none; /* Eliminar estilo nativo para consistencia */\n  background-image: url(\\\"data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e\\\");\n  background-repeat: no-repeat;\n  background-position: right 1rem center;\n  background-size: 1em;\n}\n\n.Modal-form select:focus {\n  border-color: var(--brand);\n  outline: none;\n}\" >> \"c:\\Users\\SANDRO\\VS Code\\Programacion Web\\Proyecto-NutriTrack\\primer-proyecto\\css\\main.css\"",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "append_css_resumen",
+			"type": "shell",
+			"command": "echo \"\n/* Resumen Dashboard Widget */\n.Resumen-stats {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 1rem;\n  margin-bottom: 1.2rem;\n  text-align: center;\n}\n.Resumen-stat {\n  display: flex;\n  flex-direction: column;\n  gap: 0.2rem;\n  padding: 0.8rem 0.5rem;\n  background: var(--light);\n  border-radius: 12px;\n  border: 1px solid var(--border);\n}\n.Resumen-label {\n  font-size: 0.8rem;\n  color: var(--muted);\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: 0.5px;\n}\n.Resumen-value {\n  font-size: 1.25rem;\n  font-weight: 800;\n  color: var(--dark);\n}\n.Resumen-value.is-danger { color: var(--danger); }\n.Resumen-value.is-success { color: var(--brand); }\n\" >> \"c:\\Users\\SANDRO\\VS Code\\Programacion Web\\Proyecto-NutriTrack\\primer-proyecto\\css\\main.css\"",
+			"args": [],
+			"isBackground": false,
+			"group": "build"
+		}
+	]
+}

@@ -10,23 +10,23 @@
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Encabezado -->
   <header class="Header">
     <div class="Header-container u-container">
-      <a class="Header-brand" href="../index.html">NutriTrack</a>
+      <a class="Header-brand" href="dashboard.html">NutriTrack</a>
       
       <div class="Header-actions">
-        <a class="btn btn--secondary" href="registrar.html">Registrar comida</a>
+        <a class="btn btn--tertiary btn--sm" href="registrar.html">Registra tu comida</a>
         
         <div class="Header-profile">
           <div class="Header-profileIcon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <img src="../assets/icons/user.svg" alt="Perfil" class="Header-userIcon">
           </div>
           <div class="Header-dropdown">
             <a href="usuario.html">Perfil</a>
             <a href="configuracion.html">Configuración</a>
             <div class="Header-dropdownDivider"></div>
-            <a href="../index.html" class="text-danger">Cerrar sesión</a>
+            <a href="../index.html" class="Header-logout">Cerrar sesión</a>
           </div>
         </div>
       </div>
@@ -52,23 +52,45 @@
     <!-- Panel principal -->
     <section class="App-main">
       <div class="Card">
-        <h3>Resumen de hoy</h3>
-        <p>Aquí irán tus gráficos y tarjetas de resumen.</p>
+        <h3>Resumen calórico de hoy</h3>
+        <div id="dash-resumen-calorias" style="margin-top: 1rem;">
+          <div class="Resumen-stats">
+            <div class="Resumen-stat">
+              <span class="Resumen-label">Meta</span>
+              <span class="Resumen-value" id="resumen-meta">--</span>
+            </div>
+            <div class="Resumen-stat">
+              <span class="Resumen-label">Consumido</span>
+              <span class="Resumen-value" id="resumen-consumido">--</span>
+            </div>
+            <div class="Resumen-stat">
+              <span class="Resumen-label">Restante</span>
+              <span class="Resumen-value" id="resumen-restante">--</span>
+            </div>
+          </div>
+
+          <div class="ProgressBar" style="height: 12px; background: var(--border); margin-bottom: 0.8rem; border-radius: 6px;">
+            <div id="resumen-barra" class="ProgressBar-fill" style="width: 0%; background: var(--brand); border-radius: 6px;"></div>
+          </div>
+          
+          <p id="resumen-mensaje" style="font-size: 0.9rem; color: var(--muted); margin: 0px 2px; text-align: left;">
+            Calculando...
+          </p>
+        </div>
       </div>
 
       <div class="Card" style="margin-top: 1.5rem;">
-        <h3>Mis Metas</h3>
+        <h3>Tus Rachas 🔥</h3>
         <div id="dash-metas-container">
           <!-- Carga dinámica de metas -->
           <p style="color: var(--muted);">Cargando metas...</p>
         </div>
-        <a href="metas.html" class="btn btn--secondary" style="margin-top: 1rem; display: inline-block; text-decoration: none;">Ver todas</a>
       </div>
     </section>
 
   </main> <!-- CIERRE DEL MAIN AQUÍ -->
 
-  <!-- Footer -->
+  <!-- Pie de página -->
   <footer class="Footer">
     <div class="Footer-container u-container">
       <div class="Footer-block">
@@ -87,6 +109,68 @@
       </div>
     </div>
   </footer>
+
+  <!-- Modal Onboarding (Configuración Inicial) -->
+  <section id="modal-onboarding" class="Modal" role="dialog" aria-labelledby="onboarding-title" hidden>
+    <div class="Modal-dialog">
+      <!-- Sin botón de cerrar para obligar el llenado -->
+      
+      <h2 id="onboarding-title" class="u-textCenter">¡Bienvenido a NutriTrack!</h2>
+      <p class="Modal-subtitle">Para personalizar tus metas y calcular tus calorías ideales, necesitamos conocerte un poco más.</p>
+      
+      <form id="form-onboarding" class="Modal-form">
+        <div class="Modal-form-row">
+          <label>
+            Edad (años)
+            <input type="number" id="ob-edad" required min="10" max="100" placeholder="Ej: 25">
+          </label>
+          <label>
+            Peso (kg)
+            <input type="number" id="ob-peso" required min="30" max="300" step="0.1" placeholder="Ej: 70">
+          </label>
+        </div>
+
+        <div class="Modal-form-row">
+          <label>
+            Altura (cm)
+            <input type="number" id="ob-altura" required min="100" max="250" placeholder="Ej: 170">
+          </label>
+          <label>
+            Género
+            <select id="ob-genero" required>
+              <option value="" disabled selected>Selecciona</option>
+              <option value="masculino">Masculino</option>
+              <option value="femenino">Femenino</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          Nivel de Actividad
+          <select id="ob-actividad" required>
+            <option value="" disabled selected>Selecciona tu nivel</option>
+            <option value="sedentario">Sedentario (Poco o nada de ejercicio)</option>
+            <option value="ligero">Ligero (Ejercicio 1-3 días/semana)</option>
+            <option value="moderado">Moderado (Ejercicio 3-5 días/semana)</option>
+            <option value="activo">Activo (Ejercicio 6-7 días/semana)</option>
+            <option value="muy_activo">Muy Activo (Trabajo físico o doble sesión)</option>
+          </select>
+        </label>
+
+        <label>
+          Objetivo Principal
+          <select id="ob-objetivo" required>
+            <option value="" disabled selected>¿Qué quieres lograr?</option>
+            <option value="perder_peso">Perder Peso</option>
+            <option value="mantener">Mantener Peso</option>
+            <option value="ganar_musculo">Ganar Músculo</option>
+          </select>
+        </label>
+
+        <button class="btn btn--primary btn--full" type="submit" style="margin-top: 1rem;">Guardar y Empezar</button>
+      </form>
+    </div>
+  </section>
 
   <script src="../js/app.js" defer></script>
 </body>

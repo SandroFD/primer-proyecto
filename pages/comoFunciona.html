@@ -3,22 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Testimonios — NutriTrack</title>
+  <title>¿Cómo funciona? | NutriTrack</title>
   <link rel="stylesheet" href="../css/main.css">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
   <!-- Encabezado -->
   <header class="Header">
     <div class="Header-container u-container">
       <a class="Header-brand" href="../index.html">NutriTrack</a>
+
+      <!-- Menú móvil -->
       <button class="Header-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
           <span class="Header-toggleBar"></span>
           <span class="Header-toggleBar"></span>
           <span class="Header-toggleBar"></span>
       </button>
+
       <nav class="Header-nav" id="nav-menu">
           <a class="Header-navLink" href="comoFunciona.html">¿Cómo funciona?</a>
           <a class="btn btn--secondary" href="#login" data-modal-open="login">Iniciar sesión</a>
@@ -28,14 +30,47 @@
   </header>
 
   <!-- Contenido -->
-  <main class="u-container" style="padding-block: 2.5rem;">
-    <div class="PageHeader">
-      <h1>Testimonios</h1>
-      <p>Historias de nuestra comunidad, ordenadas del más reciente al más antiguo.</p>
+  <main class="u-container PageContent">
+    <h1>¿Cómo funciona NutriTrack?</h1>
+    <p>NutriTrack es tu compañero digital para adoptar hábitos alimenticios saludables de manera sencilla y efectiva. Nuestra plataforma combina herramientas de seguimiento con inteligencia artificial para facilitarte el camino hacia tus objetivos.</p>
+
+    <div class="StepsGrid" style="display: grid; gap: 2rem; margin-top: 2rem;">
+      
+      <div class="StepCard" style="background: var(--light); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border);">
+        <h3 style="color: var(--brand);">1. Configura tu Perfil</h3>
+        <p>Al registrarte, ingresa tus datos básicos (edad, peso, altura) y tu objetivo principal (perder peso, mantenerte o ganar masa muscular). NutriTrack calculará automáticamente tu meta calórica diaria recomendada.</p>
+      </div>
+
+      <div class="StepCard" style="background: var(--light); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border);">
+        <h3 style="color: var(--brand);">2. Registra tus Comidas</h3>
+        <p>Mantén un diario de lo que comes. Puedes hacerlo de dos formas:</p>
+        <ul style="padding-left: 1.2rem; margin-top: 0.5rem;">
+          <li><strong>Manual:</strong> Busca alimentos en nuestra base de datos o ingrésalos directamente.</li>
+          <li><strong>Con IA:</strong> ¡Sube una foto de tu plato! Nuestra inteligencia artificial analizará la imagen y estimará las calorías por ti.</li>
+        </ul>
+      </div>
+
+      <div class="StepCard" style="background: var(--light); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border);">
+        <h3 style="color: var(--brand);">3. Define tus Metas</h3>
+        <p>Más allá de las calorías, establece hábitos saludables como "Beber 2 litros de agua" o "Comer una fruta al día". Podrás marcar tu progreso diario y ver tus rachas de cumplimiento.</p>
+      </div>
+
+      <div class="StepCard" style="background: var(--light); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border);">
+        <h3 style="color: var(--brand);">4. Consulta con NutriBot</h3>
+        <p>¿Tienes dudas sobre un alimento o necesitas un consejo rápido? Nuestro Chatbot con IA está disponible 24/7 para responder tus preguntas sobre nutrición y bienestar.</p>
+      </div>
+
+      <div class="StepCard" style="background: var(--light); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border);">
+        <h3 style="color: var(--brand);">5. Visualiza tu Progreso</h3>
+        <p>Accede a gráficos claros sobre tu consumo semanal y descarga reportes en PDF para compartir con tu nutricionista o guardar para tu control personal.</p>
+      </div>
+
     </div>
 
-    <!-- Lista de testimonios -->
-    <section id="testimonials-list" class="TestimonialsPage-grid" aria-live="polite"></section>
+    <div style="margin-top: 3rem; text-align: center;">
+      <a href="#register" class="btn btn--primary btn--lg" data-modal-open="register">¡Empieza ahora!</a>
+    </div>
+
   </main>
 
   <!-- Pie de página -->
@@ -58,7 +93,7 @@
     </div>
   </footer>
 
-  <!-- Modales -->
+  <!-- Modales (Reutilizados para funcionalidad de login/registro) -->
   <!-- Modal Iniciar Sesión -->
   <section id="login" class="Modal" role="dialog" aria-labelledby="login-title" hidden>
     <div class="Modal-dialog">
@@ -153,40 +188,7 @@
       </p>
     </div>
   </section>
-  
-  <!-- Scripts -->
+
   <script src="../js/app.js" defer></script>
-  <script>
-    // Renderizado de testimonios
-    document.addEventListener('DOMContentLoaded', () => {
-      
-      function formatDate(isoDate) {
-        try {
-          return new Date(isoDate + 'T00:00:00').toLocaleDateString('es-PE', { day: '2-digit', month: 'short', year: 'numeric' });
-        } catch(e) { return isoDate; }
-      }
-
-      const listContainer = document.getElementById('testimonials-list');
-      const testimonialsData = (window.TESTIMONIOS || [])
-        .slice()
-        .sort((a, b) => new Date(b.date) - new Date(a.date)); // Ordenar por fecha, más reciente primero
-
-      if (listContainer && testimonialsData.length > 0) {
-        testimonialsData.forEach(testimonial => {
-          const card = document.createElement('article');
-          // Tarjeta de testimonio
-          card.className = 'TestimonialCard';
-          card.innerHTML = `
-            <p>“${testimonial.text}”</p>
-            <footer>
-              <cite class="TestimonialCard-author">${testimonial.name}</cite>
-              <span class="TestimonialCard-meta">${testimonial.age} años • ${formatDate(testimonial.date)}</span>
-            </footer>
-          `;
-          listContainer.appendChild(card);
-        });
-      }
-    });
-  </script>
 </body>
 </html>
