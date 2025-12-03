@@ -10,23 +10,23 @@
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Encabezado -->
   <header class="Header">
     <div class="Header-container u-container">
-      <a class="Header-brand" href="../index.html">NutriTrack</a>
+      <a class="Header-brand" href="dashboard.html">NutriTrack</a>
       
       <div class="Header-actions">
-        <a class="btn btn--secondary" href="registrar.html">Registrar comida</a>
+        <a class="btn btn--tertiary btn--sm" href="registrar.html">Registra tu comida</a>
         
         <div class="Header-profile">
           <div class="Header-profileIcon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <img src="../assets/icons/user.svg" alt="Perfil" class="Header-userIcon">
           </div>
           <div class="Header-dropdown">
             <a href="usuario.html">Perfil</a>
             <a href="configuracion.html">Configuración</a>
             <div class="Header-dropdownDivider"></div>
-            <a href="../index.html" class="text-danger">Cerrar sesión</a>
+            <a href="../index.html" class="Header-logout">Cerrar sesión</a>
           </div>
         </div>
       </div>
@@ -52,26 +52,54 @@
     <!-- Panel principal -->
     <section class="App-main">
       
-      <!-- Formulario -->
-      <div class="Card" style="margin-bottom: 1.5rem; text-align: left;">
-        <h3>Agregar Nueva Meta</h3>
-        <form id="form-meta" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
-          <div style="flex: 1; min-width: 200px;">
-            <input type="text" id="meta-titulo" placeholder="Ej: Beber 2L de agua" required 
-                   style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px;">
+      <!-- SECCIÓN 1: OBJETIVOS CUANTITATIVOS -->
+      <div class="Card Card--left u-mb-md">
+        <h3 class="Section-title">Mi Objetivo Principal</h3>
+        
+        <div class="Goals-grid">
+          
+          <!-- Tarjeta de Calorías -->
+          <div class="GoalCard">
+            <h4 class="GoalCard-label">Meta Diaria de Calorías</h4>
+            <div class="GoalCard-value">
+              <span id="meta-calorias-display">--</span> <span class="GoalCard-unit">kcal</span>
+            </div>
+            <p class="GoalCard-help">Calculado según tu perfil.</p>
           </div>
-          <div style="flex: 1; min-width: 200px;">
-            <input type="text" id="meta-desc" placeholder="Descripción (opcional)" 
-                   style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px;">
+
+          <!-- Actualizar Peso -->
+          <div class="GoalCard">
+            <h4 class="GoalCard-label">Peso Actual (kg)</h4>
+            <form id="form-actualizar-peso" class="GoalCard-form">
+              <input type="number" id="meta-peso-input" step="0.1" class="GoalCard-input" required>
+              <button type="submit" class="btn btn--primary btn--sm">Actualizar</button>
+            </form>
+            <p class="GoalCard-help">Al cambiarlo, se recalculará tu meta.</p>
           </div>
-          <button type="submit" class="btn btn--primary">Guardar</button>
+
+        </div>
+      </div>
+
+      <!-- SECCIÓN 2: HÁBITOS -->
+      <div class="Card Card--left u-mb-md">
+        <h3>Metas saludables</h3>
+        <p class="Section-subtitle">Define pequeños objetivos diarios no numéricos.</p>
+        
+        <form id="form-meta" class="Habit-form">
+          <div class="Habit-inputGroup">
+            <input type="text" id="meta-titulo" placeholder="Ej: Beber 2L de agua" required class="Habit-input">
+          </div>
+          <div class="Habit-inputGroup">
+            <input type="text" id="meta-desc" placeholder="Descripción (opcional)" class="Habit-input">
+          </div>
+          <button type="submit" class="btn btn--secondary">Agregar Hábito</button>
         </form>
       </div>
 
       <!-- Lista de metas -->
-      <div class="Card" style="text-align: left;">
-        <h3>Mis Metas Activas</h3>
-        <div id="lista-metas" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+      <div class="Card Card--left">
+        <h3>Mis metas activas</h3>
+        <div id="lista-metas" class="Habit-list">
           <!-- Carga dinámica -->
           <p style="color: var(--muted);">Cargando metas...</p>
         </div>
@@ -80,7 +108,7 @@
 
   </main>
 
-  <!-- Footer -->
+  <!-- Pie de página -->
   <footer class="Footer">
     <div class="Footer-container u-container">
       <div class="Footer-block">
@@ -99,6 +127,34 @@
       </div>
     </div>
   </footer>
+
+  <!-- Templates -->
+  <template id="template-meta-item">
+    <div class="MetaItem">
+      <div class="MetaItem-content">
+        <div class="MetaItem-header">
+          <h4 class="MetaItem-title"></h4>
+          <span class="MetaItem-streak" title="Racha actual"></span>
+          <span class="MetaItem-badge"></span>
+        </div>
+        <p class="MetaItem-desc"></p>
+      </div>
+      <div class="MetaItem-actions">
+        <!-- Check/Complete -->
+        <button class="btn-icon btn-complete" title="Completar hoy">
+          <div class="btn-icon-img icon-check"></div>
+        </button>
+        <!-- Edit -->
+        <button class="btn-icon btn-edit" title="Editar">
+          <div class="btn-icon-img icon-edit"></div>
+        </button>
+        <!-- Delete -->
+        <button class="btn-icon btn-delete" title="Eliminar">
+          <div class="btn-icon-img icon-delete"></div>
+        </button>
+      </div>
+    </div>
+  </template>
 
   <script src="../js/app.js" defer></script>
 </body>
