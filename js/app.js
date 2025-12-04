@@ -101,6 +101,10 @@ const Store = {
   set: (key, val) => {
     const realKey = Store.getUserKey(key);
     localStorage.setItem(realKey, JSON.stringify(val));
+  },
+  remove: (key) => {
+    const realKey = Store.getUserKey(key);
+    localStorage.removeItem(realKey);
   }
 };
 
@@ -228,6 +232,20 @@ const Auth = {
   logout: () => {
     localStorage.removeItem('nt_usuario_actual');
     window.location.href = '../index.html';
+  },
+
+  eliminarCuentaActual: () => {
+    const usuario = JSON.parse(localStorage.getItem('nt_usuario_actual'));
+    if (!usuario) return false;
+
+    const usuarios = Auth.getUsers().filter(u => u.email !== usuario.email);
+    Store.set('nt_usuarios', usuarios);
+
+    ['nt_perfil', 'nt_metas', 'nt_alimentos', 'nt_registros', 'nt_chat_history']
+      .forEach((key) => Store.remove(key));
+
+    localStorage.removeItem('nt_usuario_actual');
+    return true;
   }
 };
 
@@ -1133,6 +1151,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Editar Configuración
   const formConfig = document.getElementById('form-config');
   const btnGuardarConfig = document.getElementById('btn-guardar-config');
+  const btnEliminarCuenta = document.getElementById('btn-eliminar-cuenta');
 
   if (formConfig) {
     // Llenar formulario con datos actuales
@@ -1187,6 +1206,27 @@ document.addEventListener("DOMContentLoaded", () => {
         guardarConfiguracion();
       });
     }
+  }
+
+  if (btnEliminarCuenta) {
+    btnEliminarCuenta.addEventListener('click', () => {
+      const usuario = JSON.parse(localStorage.getItem('nt_usuario_actual'));
+      if (!usuario) {
+        alert('Debes iniciar sesión para eliminar tu cuenta.');
+        return;
+      }
+
+      const confirmado = confirm('¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer.');
+      if (!confirmado) return;
+
+      const exito = Auth.eliminarCuentaActual();
+      if (exito) {
+        alert('Tu cuenta y datos personales fueron eliminados.');
+        window.location.href = '../index.html';
+      } else {
+        alert('No pudimos eliminar tu cuenta. Intenta iniciar sesión nuevamente.');
+      }
+    });
   }
 });
 
