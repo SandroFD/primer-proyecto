@@ -132,13 +132,9 @@ const datosIniciales = {
   ]
 };
 
-// API Key para las integraciones con Gemini (compartida entre módulos)
-// Se obtiene del objeto CONFIG definido en js/config.js para no exponer la clave real
-const GEMINI_API_KEY = typeof CONFIG !== 'undefined' ? CONFIG.GEMINI_API_KEY : '';
-
-if (!GEMINI_API_KEY) {
-  console.warn('Falta la API KEY. Crea js/config.js basado en js/config.example.js');
-}
+// API Key para las integraciones con Gemini (compartida entre módulos).
+// El acceso queda limitado al dominio oficial del proyecto.
+const GEMINI_API_KEY = "AIzaSyAwWzTuBHaM39ZjfORpUmS8Pp_AvrA8rsg";
 
 // Cargar datos guardados
 const estado = {
